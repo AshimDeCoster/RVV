@@ -1,0 +1,15 @@
+{
+  "name": "RVV",
+  "version": "0.0.0",
+  "description": "RVV",
+  "main": "app.js",
+  "author": {
+    "name": "Ashim",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "3.4.4",
+    "jade": "*",
+    "stylus": "*"
+  }
+}
