@@ -31,9 +31,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
-app.get('/helloworld', function (req, res) {
-    res.render('helloWorld', { title: 'Hello World' });
-});
+app.get('/helloworld', routes.helloworld);
 app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function () {
