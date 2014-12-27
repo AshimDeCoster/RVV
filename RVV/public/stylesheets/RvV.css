@@ -1,0 +1,69 @@
+﻿body {
+    overflow-y:hidden;
+}
+nav {
+    width:100%;
+    height:100px;
+    background-color:#222;
+    margin-top:0;
+}
+    nav ul{
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        position:absolute;
+        right:0;
+        margin-right:25px;
+    }
+    nav ul li {
+        float:left;
+        padding:36px 25px 36px 25px;
+    }
+    nav ul li:hover {
+        background-color:rgba(255,213,68,0.7);
+    }
+    nav ul li a {
+        text-decoration:none;
+        color:white;
+        font-size:1.5em;
+    }
+header{
+    position:absolute;
+    text-align:center;
+    color:white;
+    left:50%;
+    width:960px;
+    margin-left:-480px;
+    margin-top:15%;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+    header h1 {
+        font-size:3em;
+    }
+    header h2 {
+        font-size:2em;
+    }
+#Startpagina img {
+    width:100%;
+}
+input[type="image"] {
+    display:block;
+    width:100px;
+    margin:-10% auto;
+}
+#over {
+    position:absolute;
+    margin-top:13%;
+    color:white;
+    background-color:#222222;
+    width:100%;
+}
+#overSite{
+    width:1200px;
+    margin:0 auto;
+    padding:10%;
+    font-size:1.5em;
+}
+    #overSite > h3 {
+        text-align:center;
+    }
