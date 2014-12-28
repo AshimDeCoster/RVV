@@ -5,6 +5,17 @@ $(document).ready(function () {
     });
 });
 
-function ScrollNaarOver() { 
-    
+
+
+function ScrollNaarOver() {    
+    $('#over').goTo();
 }
+
+(function ($) {
+    $.fn.goTo = function () {
+        $('html, body').animate({
+            scrollTop: $(this).offset().top + 'px'
+        }, 'slow');
+        return this;
+    }
+})(jQuery);
