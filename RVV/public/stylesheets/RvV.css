@@ -52,7 +52,7 @@ input[type="image"] {
     margin:-10% auto;
 }
 #over {
-    position:absolute;
+    position:relative;
     margin-top:13%;
     color:white;
     background-color:#222222;
@@ -67,3 +67,12 @@ input[type="image"] {
     #overSite > h3 {
         text-align:center;
     }
+
+#Parcours{
+    position:relative;
+    width:100%;
+    height:725px;
+}
+.afbeelding_parcours{
+    width:100%;
+}
