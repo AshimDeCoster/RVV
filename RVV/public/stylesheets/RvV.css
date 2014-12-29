@@ -121,10 +121,13 @@ input[type="image"] {
   height: 50px;
 }
 #controls span {
-  padding-right:2em;
+  padding-right:1em;
+  padding-left:1em;
   cursor:pointer;
   color:white;
-  opacity:1.0;
- 
+}
+.selected {
+    padding:6px 1em 16px 1em;
+    background-color:rgba(255,213,68,0.6);
 }
 

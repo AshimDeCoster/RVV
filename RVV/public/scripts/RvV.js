@@ -1,10 +1,13 @@
 $(document).ready(function () {
-  
+    
+    var linkHome = $('a[href="#Startpagina"]');
     var btnNaarOver = $('#btnNaarOver');
     var linkOver = $('a[href="#over"]');
     var btnNaarParcours = $('#btnNaarParcours');
     var linkParcours = $('a[href="#Parcours"]');
     var secParcour = $('#Parcours');
+    
+
 
     btnNaarOver.click(function () { 
         ScrollNaarOver();
@@ -17,6 +20,9 @@ $(document).ready(function () {
     });
     linkParcours.click(function () { 
         ScrollNaarParcours();
+    });
+    linkHome.click(function () {
+        ScrollNaarStart();
     });
     $("#controls").on('click', 'span', function () {
         LoadImages(this);
@@ -41,6 +47,9 @@ function ScrollNaarOver() {
 }
 function ScrollNaarParcours() {
     $('#Parcours').goTo();
+}
+function ScrollNaarStart() {
+    $('#Startpagina').goTo();
 }
 
 (function ($) {
