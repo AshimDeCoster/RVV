@@ -1,5 +1,11 @@
-﻿body {
+﻿@font-face {
+    font-family: BigJohn;
+    src: url(../fonts/BigJohn.ttf);
+    src: url(../fonts/BigJohn.woff);
+}
+body {
     /*overflow-y:hidden; */
+    background-color:#222;
 }
 ::-webkit-scrollbar { 
     display: none; 
@@ -10,7 +16,7 @@ nav {
     background-color:#222;
     margin-top:0;  
     
-    z-index: 9999; position: fixed; left: 0; top: 0; width: 100%; 
+    z-index: 9999; position: fixed; left: 0; top: 0;
 }
 	.f-nav{
            opacity: 0.6;
@@ -41,21 +47,25 @@ nav {
         color:white;
         font-size:1.5em;
     }
+    nav ul li a:hover {
+        text-decoration:none;
+        color:white;
+    }
 header{
     position:absolute;
     text-align:center;
-    color:white;
+    color:#FFFFF0;
     left:50%;
     width:960px;
     margin-left:-480px;
     margin-top:15%;
-    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-family:BigJohn;
 }
     header h1 {
-        font-size:3em;
+        font-size:3.5em;
     }
     header h2 {
-        font-size:2em;
+        font-size:2.5em;
     }
 #Startpagina img {
     width:100%;
@@ -93,19 +103,22 @@ input[type="image"] {
      
 }
 #Parcours img {   
-    width: 100%; 
+    width: 100%;
 }
 
-p#controls { 
- 
+#controls { 
+  font-family:BigJohn;
+  font-size:2em;
   text-align:center;
   background-color:#000;
-  opacity:0.6;
+  opacity:0.8;
   position: absolute; 
   bottom:0;
+  margin-bottom:0;
+  padding-bottom:0;
   left: 0; 
   width: 100%;
-  height: 40px;
+  height: 50px;
 }
 #controls span {
   padding-right:2em;
