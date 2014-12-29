@@ -1,8 +1,10 @@
 $(document).ready(function () {
+  
     var btnNaarOver = $('#btnNaarOver');
     var linkOver = $('a[href="#over"]');
     var btnNaarParcours = $('#btnNaarParcours');
     var linkParcours = $('a[href="#Parcours"]');
+    var secParcour = $('#Parcours');
 
     btnNaarOver.click(function () { 
         ScrollNaarOver();
@@ -15,6 +17,9 @@ $(document).ready(function () {
     });
     linkParcours.click(function () { 
         ScrollNaarParcours();
+    });
+    $("#controls").on('click', 'span', function () {
+        LoadImages(this);
     });
 
 });
@@ -52,3 +57,34 @@ function ScrollNaarParcours() {
         return this;
     }
 })(jQuery);
+
+
+function LoadImages(object) {
+    var fileNames = ["Parcours_1913","Parcours_19132","Parcours_19133","Parcours_19134"];
+    var dir = "/images/Parcours/";
+    var firstImg = $('#parcourImg');
+    
+    $("#controls span").removeClass("selected");
+    $(object).addClass("selected");
+    
+    console.log(dir + $(object).index() + ".jpg");
+
+    firstImg.fadeOut(800, function () {
+        firstImg.attr("src", dir + fileNames[$(object).index()] + ".png");
+        firstImg.fadeIn(800);
+    });
+    
+    /*if ($(firstImg).is(":visible")) {
+        //$("#parcourImg").attr("src", dir + "pony.jpg");
+        secondImg.css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, src: "images/Parcours/wiel.jpg" }, 1000);
+        firstImg.css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0 }, 1000);
+        
+    }
+    else {
+        firstImg.css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0 }, 1000);
+        secondImg.css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, visibility: "hidden" }, 1000);
+        
+    }*/
+    
+    
+}
