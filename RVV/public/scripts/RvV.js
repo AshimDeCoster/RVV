@@ -7,8 +7,7 @@ $(document).ready(function () {
     var linkParcours = $('a[href="#Parcours"]');
     var secParcour = $('#Parcours');
     
-
-
+    
     btnNaarOver.click(function () { 
         ScrollNaarOver();
     });
@@ -74,4 +73,15 @@ function LoadImages(object) {
         firstImg.attr("src", dir + fileNames[$(object).index()] + ".jpg");
         firstImg.fadeIn(800);
     });
+    GetParcourInfo();
+}
+function GetParcourInfo() {
+    var info = $.parseJSON($('#info').text());
+   
+
+    for (var i = 0; i < info.length; i++) {
+        if (info[i].jaar == $(".selected").text()) {
+            console.log(info[i].info);
+        }
+    }
 }

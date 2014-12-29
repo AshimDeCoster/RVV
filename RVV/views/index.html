@@ -21,7 +21,7 @@
     </nav>
     <section id="Startpagina">
         <header>
-            <h1>De Ronde van Vlaanderen</h1>
+            <h1><%= title %></h1>
             <h2>vroeger en nu</h2>
         </header>
         <img src="images/achtergrond.jpg" alt="homeBackground"/>
@@ -42,7 +42,8 @@
     </section>
 
     <section id="Parcours">       
-        <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" />       
+        <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" /> 
+        <div id="info"><%= info_parc %></div>      
         <p id="controls">
             <span class="selected">1913</span>
             <span>1939</span>

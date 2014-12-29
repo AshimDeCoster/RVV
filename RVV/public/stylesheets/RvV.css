@@ -130,4 +130,7 @@ input[type="image"] {
     padding:6px 1em 16px 1em;
     background-color:rgba(255,213,68,0.6);
 }
+#info{
+    display: none;
+}
 

@@ -8,7 +8,6 @@ var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-var mongoose = require('mongoose');
 
 var app = express();
 
@@ -29,22 +28,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-var connectDB = require("./data/ConnectDb");
 
-var schema = new mongoose.Schema({ Nickname: String }, { collection: 'Users' });
-schema.set('collection', 'Users');
-var M = mongoose.model('Users', schema, 'Users')
 // development only
 if ('development' == app.get('env')) {
-    app.use(express.errorHandler());
-    
+    app.use(express.errorHandler());   
 }
 
 app.get('/', routes.index);
-app.get('/helloworld', function (req, res) {
+app.get('/helloworld', function (req, res) {    
  
-    M.find(function (err, users) {
-        res.send(users);});
+    
 });
 app.get('/users', user.list);
 
