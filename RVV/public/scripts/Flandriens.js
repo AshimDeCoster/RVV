@@ -1,7 +1,16 @@
 ﻿$(document).ready(function () {
     
     VeranderFoto();
+
+
+    $('#Renners').live('click', function (e) {
+        console.log(e.target.id);
+        ShowInfo(e.target.id); 
+    });
 });
+
+
+
 var i = 1;
 var myTimeOut;
 function VeranderFoto() {
@@ -33,6 +42,26 @@ function VeranderFoto() {
         i++;
     else
         i = 1;
-    myTimeOut =setTimeout("VeranderFoto()", 3000);
+    myTimeOut =setTimeout("VeranderFoto()", 5000);
 }
+function ShowInfo(id) {
+    var div2 = $($('#Renners').children()[1]);
+    var div3 = $($('#Renners').children()[2]);
+    var div1 = $($('#Renners').children()[0]);
+    if (id == "foto1") {
+        clearTimeout(myTimeOut);
+        
+        div1.children('p').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '120%'},1000);
+        
+        
+        div2.fadeOut(1000, function () { });
+        div3.fadeOut(1000, function () { });
+
+    }
+    else
+        myTimeOut = setTimeout("VeranderFoto()", 5000);
+}
+
+
+
 
