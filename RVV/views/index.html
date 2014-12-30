@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>RVV - vroeger en nu</title>
+    <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/normalize.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/RvV.css" rel="stylesheet" type="text/css" />
@@ -41,10 +42,9 @@
         </div>
     </section>
 
-    <section id="Parcours">       
-        <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" /> 
-        <!--<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>-->
-        <div id="info"><%= info_parc %></div>      
+    <section id="Parcours">        
+        <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" />
+        <div id="info"><%= info_parc %></div>
         <p id="controls">
             <span class="selected">1913</span>
             <span>1939</span>
@@ -54,14 +54,13 @@
             <span>2010</span>
             <span>2014</span>
         </p>
-
+        <input id="btnToonInfo" type="image" src="images/info_icon.png" />
         <div id="infoOverParcours">
             <p></p>
+            <ul>
+            </ul>
+            <p>Klik terug op info om dit venster te sluiten.</p>
         </div>
-    </section>
-    <section>
-        <h1>Flandriens</h1>
-        <p><%= flandriens %></p>
     </section>
 
     
