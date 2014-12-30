@@ -156,4 +156,14 @@ input[type="image"] {
     #infoOverParcours p {
         padding:25px;
     }
+#Renners{
+    padding:0;
+    margin:0;
+    width:100%;
+}
+.afbeelding_renners{
+    width: 33%;
+      
+}
+
 

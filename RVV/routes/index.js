@@ -14,7 +14,7 @@ exports.index = function (req, res) {
     infoParcours.find({}, function (err, info_parcours) {
         flandriens.find({}, function (err, docs) {
             console.log(info_parcours[0].info);
-            res.render('index', { title: 'De Ronde van Vlaanderen', info_parc: JSON.stringify(info_parcours), flandriens: JSON.stringify(docs) });
+            res.render('index', { title: 'De Ronde van Vlaanderen', info_parc: JSON.stringify(info_parcours), flandriens: docs });
         });
     });
     
