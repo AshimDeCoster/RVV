@@ -19,15 +19,15 @@ function VeranderFoto() {
         random = Math.floor(Math.random() * (13 - 0) + 0);
     }
     img.fadeOut(800, function () {
-           span.fadeOut(400, function () {
-            span.text(flandrien[random].naam);
-            span.fadeIn(400);
-            });
+           
             img.attr("src", dir + flandrien[random].img);
             
             img.fadeIn(800);
         });
-  
+    span.fadeOut(800, function () {
+        span.text(flandrien[random].naam);
+        span.fadeIn(800);
+    });
     
     if (i < 4)
         i++;
