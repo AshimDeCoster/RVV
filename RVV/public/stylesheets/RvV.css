@@ -6,6 +6,7 @@
 body {
     /*overflow-y:hidden; */
     background-color:#222;
+    font-family: 'Hammersmith One', sans-serif;
 }
 ::-webkit-scrollbar { 
     display: none; 
@@ -105,10 +106,13 @@ input[type="image"] {
 #Parcours img {   
     width: 100%;
 }
-/*#Parcours>span:first-of-type {   
-    background-color:white;
-    width:100px;
-}*/
+#btnToonInfo{
+    width:50px;
+    position:absolute;
+    left:0;
+    top:0;
+    margin:7% 10px;
+}
 
 #controls { 
   font-family:BigJohn;
@@ -143,27 +147,25 @@ input[type="image"] {
     position:absolute;
     top:0;
     left:50%;
-    margin:15% 0 0 -400px;
+    margin:13% 0 0 -400px;
     background-color:rgba(34,34,34,0.8);
     width:800px;
-    height:300px;
+    height:380px;
     color:white;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -khtml-border-radius: 20px;
-    border-radius: 20px;
+    border-radius: 20px;    
+    font-size:1.2em;
 }
     #infoOverParcours p {
         padding:25px;
     }
-#Renners{
-    padding:0;
-    margin:0;
-    width:100%;
-}
-.afbeelding_renners{
-    width: 33%;
-      
-}
+
+
+    #infoOverParcours ul {
+        list-style-type:none;
+    }
+
 
 

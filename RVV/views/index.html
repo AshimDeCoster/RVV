@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <title>RVV - vroeger en nu</title>
+    <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/normalize.css" rel="stylesheet" type="text/css" />
     <link href="stylesheets/RvV.css" rel="stylesheet" type="text/css" />
@@ -41,10 +42,9 @@
         </div>
     </section>
 
-    <section id="Parcours">       
-        <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" /> 
-        <!--<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>-->
-        <div id="info"><%= info_parc %></div>      
+    <section id="Parcours">        
+        <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" />
+        <div id="info"><%= info_parc %></div>
         <p id="controls">
             <span class="selected">1913</span>
             <span>1939</span>
@@ -54,17 +54,23 @@
             <span>2010</span>
             <span>2014</span>
         </p>
-
+        <input id="btnToonInfo" type="image" src="images/info_icon.png" />
         <div id="infoOverParcours">
             <p></p>
+            <ul>
+            </ul>
+            <p>Klik terug op info om dit venster te sluiten.</p>
         </div>
     </section>
+<<<<<<< HEAD
     <section id:Renners>
         <img id="foto1" src="images/Flandriens/<%= flandriens[0].img %>" alt="<%= flandriens[0].img %>" class="afbeelding_renners" /> 
         <img id="foto2" src="images/Flandriens/<%= flandriens[1].img %>" alt="Parcours_1913" class="afbeelding_renners" /> 
         <img id="foto3" src="images/Flandriens/<%= flandriens[2].img %>" alt="Parcours_1913" class="afbeelding_renners" /> 
         <input type="hidden" id="flandriens" value="<%= JSON.stringify(flandriens) %>">       
     </section>
+=======
+>>>>>>> 36cabdd598105ae7a777f6fdf7f70f1af1c6845b
 
     
     <script src="scripts/ScrollPage.js"></script>
