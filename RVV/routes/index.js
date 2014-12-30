@@ -5,15 +5,17 @@ sub = "Vroeger en nu!";
 
 var mongoose = require('mongoose');
 var connectDB = require("../data/ConnectDb");
-var schema = new mongoose.Schema({ jaar: String, info: String }, { collection: 'info_parcours' });
-schema.set('collection', 'info_parcours');
-var M = mongoose.model('info_parcours', schema, 'info_parcours');
+var flandriens = require('../data/models/flandrienModel');
+var infoParcours = require('../data/models/infoParcoursModel');
+
 
 exports.index = function (req, res) {
     
-    M.find({}, function (err, info_parcours) {
-        console.log(info_parcours[0].info);
-        res.render('index', { title: 'De Ronde van Vlaanderen', info_parc: JSON.stringify(info_parcours) });
+    infoParcours.find({}, function (err, info_parcours) {
+        flandriens.find({}, function (err, docs) {
+            console.log(info_parcours[0].info);
+            res.render('index', { title: 'De Ronde van Vlaanderen', info_parc: JSON.stringify(info_parcours), flandriens: JSON.stringify(docs) });
+        });
     });
     
     

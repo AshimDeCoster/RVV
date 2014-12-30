@@ -32,8 +32,6 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="data\ConnectDb.js" />
-    <Compile Include="data\models\userModel.js" />
-    <Compile Include="data\schemas\userSchema.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
     <Content Include="package.json" />
