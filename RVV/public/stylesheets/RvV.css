@@ -105,6 +105,10 @@ input[type="image"] {
 #Parcours img {   
     width: 100%;
 }
+/*#Parcours>span:first-of-type {   
+    background-color:white;
+    width:100px;
+}*/
 
 #controls { 
   font-family:BigJohn;
@@ -133,4 +137,23 @@ input[type="image"] {
 #info{
     display: none;
 }
+
+#infoOverParcours {
+    display:none;
+    position:absolute;
+    top:0;
+    left:50%;
+    margin:15% 0 0 -400px;
+    background-color:rgba(34,34,34,0.8);
+    width:800px;
+    height:300px;
+    color:white;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -khtml-border-radius: 20px;
+    border-radius: 20px;
+}
+    #infoOverParcours p {
+        padding:25px;
+    }
 
