@@ -5,7 +5,7 @@ $(document).ready(function () {
     var linkOver = $('a[href="#over"]');
     var btnNaarParcours = $('#btnNaarParcours');
     var linkParcours = $('a[href="#Parcours"]');
-    
+    var linkRenners = $('a[href="#Renners"]');
     
     btnNaarOver.click(function () { 
         ScrollNaarOver();
@@ -21,6 +21,9 @@ $(document).ready(function () {
     });
     linkHome.click(function () {
         ScrollNaarStart();
+    });
+    linkRenners.click(function () {
+        ScrollNaarRenners();
     });
 });
 
@@ -44,6 +47,9 @@ function ScrollNaarParcours() {
 }
 function ScrollNaarStart() {
     $('#Startpagina').goTo();
+}
+function ScrollNaarRenners() {
+    $('#Renners').goTo();
 }
 
 (function ($) {
