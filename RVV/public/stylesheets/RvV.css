@@ -147,10 +147,10 @@ input[type="image"] {
     position:absolute;
     top:0;
     left:50%;
-    margin:13% 0 0 -400px;
+    margin:10% 0 0 -400px;
     background-color:rgba(34,34,34,0.8);
     width:800px;
-    height:380px;
+    height:420px;
     color:white;
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;

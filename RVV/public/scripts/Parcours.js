@@ -21,6 +21,7 @@ function LoadImages(object) {
     var firstImg = $('#parcourImg');
     var btnToonInfo = $("#btnToonInfo");
     btnToonInfo.fadeOut();
+    $('#infoOverParcours').fadeOut(800);
     
     $("#controls span").removeClass("selected");
     $(object).addClass("selected");
