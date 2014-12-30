@@ -1,5 +1,5 @@
-$(document).ready(function () {
-    var clicks = false;
+var clicks = false;
+$(document).ready(function () {    
     $("#controls").on('click', 'span', function () {
         LoadImages(this);
     });
@@ -22,6 +22,7 @@ function LoadImages(object) {
     var btnToonInfo = $("#btnToonInfo");
     btnToonInfo.fadeOut();
     $('#infoOverParcours').fadeOut(800);
+    clicks = false;
     
     $("#controls span").removeClass("selected");
     $(object).addClass("selected");
