@@ -192,18 +192,21 @@ input[type="image"] {
 }
 #Renners p {    
    position: absolute; 
-   top: 50px; 
+   top: 0px; 
    color:white;
+   background-color:#464646;
    left: 100px; 
    width: 100%; 
    font-size:5em;
    visibility:hidden;
+   padding-right: 50%;
+   padding-top:20%;
+   height:100%;
+   
 }
 #Renners h1 span { 
    color: white; 
    font: bold 1.1em Helvetica, Sans-Serif; 
-
-
    letter-spacing: -1px;  
    background: rgb(0, 0, 0); /* fallback color */
    background: rgba(0, 0, 0, 0.7);
