@@ -2,10 +2,10 @@
     
     VeranderFoto();
 });
-
+var i = 1;
 function VeranderFoto() {
     var randomImg = Math.floor(Math.random() * (4 - 1) + 1);
-    var img = $("#foto"+ randomImg);
+    var img = $("#foto"+ i);
     var dir = "/images/Flandriens/";
     
     var flandrien = $.parseJSON($('#flandriens').val());
@@ -15,6 +15,10 @@ function VeranderFoto() {
         img.attr("src", dir + flandrien[random].img);
         img.fadeIn(800);
     });
+    if (i < 4)
+        i++;
+    else
+        i = 1;
     setTimeout("VeranderFoto()", 3000);
 }
 
