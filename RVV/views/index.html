@@ -64,9 +64,18 @@
     </section>
 
     <section id="Renners">
-        <img id="foto1" src="images/Flandriens/<%= flandriens[0].img %>" alt="<%= flandriens[0].img %>" class="afbeelding_renners" /> 
-        <img id="foto2" src="images/Flandriens/<%= flandriens[1].img %>" alt="Parcours_1913" class="afbeelding_renners" /> 
-        <img id="foto3" src="images/Flandriens/<%= flandriens[2].img %>" alt="Parcours_1913" class="afbeelding_renners" /> 
+        <div>
+            <img id="foto1" src="images/Flandriens/<%= flandriens[0].img %>" alt="<%= flandriens[0].naam %>" class="afbeelding_renners" />
+            <h1><span id="span1"><%= flandriens[0].naam %></span></h1>
+        </div>
+        <div>
+            <img id="foto2" src="images/Flandriens/<%= flandriens[1].img %>" alt="<%= flandriens[1].naam %>" class="afbeelding_renners" />
+            <h1><span id="span2"><%= flandriens[1].naam %></span></h1>
+        </div>
+        <div>
+            <img id="foto3" src="images/Flandriens/<%= flandriens[2].img %>" alt="<%= flandriens[2].naam %>" class="afbeelding_renners" />
+            <h1><span id="span3"><%= flandriens[2].naam %></span></h1>
+        </div>
         <input type="hidden" id="flandriens" value="<%= JSON.stringify(flandriens) %>">       
     </section>
 
