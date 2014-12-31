@@ -43,6 +43,7 @@ nav {
         height: 80px;
         background-color:rgba(255,213,68,0.6);
     }
+    
     nav ul li a {
         text-decoration:none;
         color:white;
@@ -100,7 +101,8 @@ input[type="image"] {
 
 #Parcours{
      position:relative;  
-     width:100%;   
+     width:100%;  
+     
      
 }
 #Parcours img {   
@@ -197,9 +199,9 @@ input[type="image"] {
    background-color:#464646;
    left: 100px; 
    width: 100%; 
-   font-size:5em;
+   font-size:3em;
    visibility:hidden;
-   padding-right: 50%;
+   padding-right: 250%;
    padding-top:20%;
    height:100%;
    
