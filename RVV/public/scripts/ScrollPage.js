@@ -71,12 +71,12 @@ function ControllLocation() {
         
     }
     
-    else if ((positie+1) >= ($("#Parcours").offset().top) && positie < $("#Renners").offset().top) {
+    else if ((positie+1) >= ($("#Parcours").offset().top) && positie < $("#Renners").offset().top-10) {
         
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().addClass("active");        
     }
-    else if ((positie) >= ($("#Renners").offset().top)) {
+    else if ((positie+10) >= ($("#Renners").offset().top)) {
         
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().next().addClass("active");

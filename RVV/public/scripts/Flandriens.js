@@ -63,26 +63,34 @@ function ShowInfo(id) {
     var positiondiv1 = div1.position();
     var positiondiv3 = div3.position();
     if (id == "foto1") {
-        if (modus == false) {
-            console.log("lala");
+        if (modus == false) {            
             clearTimeout(myTimeOut);
-            div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);            
-            div2.animate({ opacity: 0 }, 500);
-            div3.animate({ opacity: 0 }, 500);
-            modus = true;
+            div1.children('div').css({left: '100%' });
+            div1.css({ position: "absolute", left: positiondiv1.left, top: positiondiv1.top });
+            div2.css({ position: "absolute", left: positiondiv2.left, top: positiondiv2.top });
+            div3.css({ position: "absolute", left: positiondiv3.left, top: positiondiv3.top });
+            div3.animate({ left: '150%' }, 500);
+            div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0}, 500);            
+            div2.animate({ left: '100%' }, 500);
+            modus = true;           
         }
         else {
-            div1.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '0', visibility: "hidden" }, 500);
-            div2.animate({ opacity: 1.0 }, 500);
-            div3.animate({ opacity: 1.0 }, 500);
+            div3.animate({ left: '66.66%' }, 400);
+            div2.animate({ left: '33.33%' }, 400);
+            setTimeout(function () {
+                div2.css({ position: "relative" , left: "", top: "" });
+                div1.css({ position: "relative" , left: "", top: "" });
+                div3.css({ position: "relative" , left: "", top: "" });
+            }, 500);            
+            div1.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, visibility: "hidden" }, 500);        
             modus = false;
             myTimeOut = setTimeout("VeranderFoto()", 5000);
+           
         }
     }
     else if (id == "foto3") {
         if (modus == false) {
-            clearTimeout(myTimeOut);
-            
+            clearTimeout(myTimeOut);            
             div1.css({ position: "absolute", left: positiondiv1.left, top: positiondiv1.top });
             div2.css({ position: "absolute", left: positiondiv2.left, top: positiondiv2.top });
             div3.css({ position: "absolute", left: positiondiv3.left, top: positiondiv3.top });
@@ -98,8 +106,7 @@ function ShowInfo(id) {
                 div2.css({ position: "relative" , left: "", top: "" });
                 div1.css({ position: "relative" , left: "", top: "" });
                 div3.css({ position: "relative" , left: "", top: "" });
-            }, 500);
-            
+            }, 500);           
             div3.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '100%', visibility: "hidden" }, 500);
             div1.animate({ opacity: 1.0 }, 500);
             div2.animate({ opacity: 1.0 }, 500);
@@ -127,8 +134,7 @@ function ShowInfo(id) {
                 div2.css({ position: "relative" , left: "", top: "" });
                 div1.css({ position: "relative" , left: "", top: "" });
                 div3.css({ position: "relative" , left: "", top: "" });  
-            }, 500);
-                     
+            }, 500);                     
             div2.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '100%', visibility: "hidden" }, 500);
             div1.animate({ opacity: 1.0 }, 500);
             div3.animate({ opacity: 1.0 }, 500);
@@ -137,23 +143,7 @@ function ShowInfo(id) {
         }
 
     }
-    else { 
-        if (modus == false) {
-            console.log("lala");
-            clearTimeout(myTimeOut);
-            div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
-            div2.animate({ opacity: 0 }, 500);
-            div3.animate({ opacity: 0 }, 500);
-            modus = true;
-        }
-        else {
-            div1.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '0', visibility: "hidden" }, 500);
-            div2.animate({ opacity: 1.0 }, 500);
-            div3.animate({ opacity: 1.0 }, 500);
-            modus = false;
-            myTimeOut = setTimeout("VeranderFoto()", 5000);
-        }    
-    }
+   
        
 }
 
