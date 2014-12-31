@@ -4,6 +4,7 @@ var flandrienSchema = new mongoose.Schema({
     naam: String,
     img: String,
     beschrijving: String,
+    carriere: String
    
    
 });

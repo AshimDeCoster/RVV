@@ -15,10 +15,14 @@ var i = 1;
 var myTimeOut;
 var modus = false;
 function VeranderFoto() {
+   
     //var randomImg = Math.floor(Math.random() * (4 - 1) + 1);
     var img = $("#foto" + i);
     var span = $("#span" + i);
+    var div = $("#div" + i);
     var dir = "/images/Flandriens/";
+    
+    
     
     var flandrien = $.parseJSON($('#flandriens').val());
     var random = Math.floor(Math.random() * (13 - 0) + 0);
@@ -28,7 +32,12 @@ function VeranderFoto() {
     while(src1 == dir + flandrien[random].img || src2 == dir + flandrien[random].img || src3 == dir + flandrien[random].img) {
         random = Math.floor(Math.random() * (13 - 0) + 0);
     }
-    $($('#Renners').children()[(i - 1)]).children('p').text(flandrien[random].beschrijving);
+    
+    div.children('h2').text(flandrien[random].naam);   
+    div.children('p').text(flandrien[random].beschrijving);
+    div.children('span').text("Carrière: "+ flandrien[random].carriere);
+    
+
     img.fadeOut(800, function () {
            
             img.attr("src", dir + flandrien[random].img);
@@ -57,13 +66,13 @@ function ShowInfo(id) {
         if (modus == false) {
             console.log("lala");
             clearTimeout(myTimeOut);
-            div1.children('p').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);            
+            div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);            
             div2.animate({ opacity: 0 }, 500);
             div3.animate({ opacity: 0 }, 500);
             modus = true;
         }
         else {
-            div1.children('p').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '0', visibility: "hidden" }, 500);
+            div1.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '0', visibility: "hidden" }, 500);
             div2.animate({ opacity: 1.0 }, 500);
             div3.animate({ opacity: 1.0 }, 500);
             modus = false;
@@ -78,7 +87,7 @@ function ShowInfo(id) {
             div2.css({ position: "absolute", left: positiondiv2.left, top: positiondiv2.top });
             div3.css({ position: "absolute", left: positiondiv3.left, top: positiondiv3.top });
             div3.animate({ left: '0' }, 500);
-            div3.children('p').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
+            div3.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
             div1.animate({ opacity: 0 }, 500);
             div2.animate({ opacity: 0 }, 500);
             modus = true;
@@ -91,7 +100,7 @@ function ShowInfo(id) {
                 div3.css({ position: "relative" , left: "", top: "" });
             }, 500);
             
-            div3.children('p').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '100%', visibility: "hidden" }, 500);
+            div3.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '100%', visibility: "hidden" }, 500);
             div1.animate({ opacity: 1.0 }, 500);
             div2.animate({ opacity: 1.0 }, 500);
             modus = false;
@@ -107,7 +116,7 @@ function ShowInfo(id) {
             div2.css({ position: "absolute", left: positiondiv2.left, top: positiondiv2.top });
             div3.css({ position: "absolute", left: positiondiv3.left, top: positiondiv3.top });
             div2.animate({ left: '0'}, 500);
-            div2.children('p').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
+            div2.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
             div1.animate({ opacity: 0 }, 500);
             div3.animate({ opacity: 0 }, 500);
             modus = true;
@@ -120,7 +129,7 @@ function ShowInfo(id) {
                 div3.css({ position: "relative" , left: "", top: "" });  
             }, 500);
                      
-            div2.children('p').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '100%', visibility: "hidden" }, 500);
+            div2.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '100%', visibility: "hidden" }, 500);
             div1.animate({ opacity: 1.0 }, 500);
             div3.animate({ opacity: 1.0 }, 500);
             modus = false;
@@ -132,13 +141,13 @@ function ShowInfo(id) {
         if (modus == false) {
             console.log("lala");
             clearTimeout(myTimeOut);
-            div1.children('p').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
+            div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
             div2.animate({ opacity: 0 }, 500);
             div3.animate({ opacity: 0 }, 500);
             modus = true;
         }
         else {
-            div1.children('p').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '0', visibility: "hidden" }, 500);
+            div1.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, left: '0', visibility: "hidden" }, 500);
             div2.animate({ opacity: 1.0 }, 500);
             div3.animate({ opacity: 1.0 }, 500);
             modus = false;
