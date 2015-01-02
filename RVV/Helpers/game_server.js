@@ -8,18 +8,17 @@ function init() {
     socket = io.listen(8000);
     //console.log(socket);
     //gebruik enkel WebSocket
-    /* socket.configure(function () {
+    // socket.configure(function () {
         socket.set("transports", ["websocket"]);
         socket.set("log level", 2);
-    });*/
+   // });
 
    setEventHandlers();
 };
 var setEventHandlers = function () {
     socket.sockets.on("connection", onSocketConnection);
 };
-function onSocketConnection(client) {
-    console.log("player connected");
+function onSocketConnection(client) {   
     util.log("New player has connected: " + client.id);
     client.on("disconnect", onClientDisconnect);
     client.on("new player", onNewPlayer);
@@ -29,8 +28,7 @@ function onClientDisconnect() {
     util.log("Player has disconnected: " + this.id);
 };
 
-function onNewPlayer(data) {
-    console.log("player connected");
+function onNewPlayer(data) {    
     var newPlayer = new Player(data.x, data.y);
     newPlayer.id = this.id;
     this.broadcast.emit("new player", { id: newPlayer.id, x: newPlayer.getX(), y: newPlayer.getY() });
