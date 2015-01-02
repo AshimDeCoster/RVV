@@ -36,9 +36,7 @@
     <Compile Include="Helpers\Player.js" />
     <Compile Include="public\scripts\Flandriens.js" />
     <Compile Include="public\scripts\game.js" />
-    <Compile Include="public\scripts\Keys.js" />
     <Compile Include="public\scripts\Player.js" />
-    <Compile Include="public\scripts\requestAnimationFrame.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
     <Content Include="package.json" />
