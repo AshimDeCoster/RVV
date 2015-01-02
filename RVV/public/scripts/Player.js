@@ -1,25 +1,19 @@
 /**************************************************
 ** GAME PLAYER CLASS
 **************************************************/
-var Player = function(startX, startY) {
-	var x = startX,
-		y = startY,
-		moveAmount = 2;
-
-	var update = function(keys) {
-		// Up key takes priority over down
-		if (keys.up) {
-			y -= moveAmount;
-		} else if (keys.down) {
-			y += moveAmount;
-		};
-
-		// Left key takes priority over right
-		if (keys.left) {
-			x -= moveAmount;
-		} else if (keys.right) {
-			x += moveAmount;
-		};
+var Player = function(startX) {
+	var x = startX,       
+        id,
+		moveAmount = 0;
+    
+    var getX = function () {
+        return x;
+    };    
+    var setX = function (newX) {
+        x = newX;
+    };    
+	var update = function() {
+        moveAmount++;
 	};
 
 	var draw = function(ctx) {
@@ -28,6 +22,9 @@ var Player = function(startX, startY) {
 
 	return {
 		update: update,
-		draw: draw
+        draw: draw,
+        getX: getX,
+        setX: setX
+
 	}
 };
