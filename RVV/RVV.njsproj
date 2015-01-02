@@ -31,25 +31,34 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
-    <Compile Include="data\ConnectDb.js" />
+    <Compile Include="Helpers\ConnectDb.js" />
+    <Compile Include="Helpers\Game_server.js" />
+    <Compile Include="Helpers\Player.js" />
     <Compile Include="public\scripts\Flandriens.js" />
+    <Compile Include="public\scripts\game.js" />
+    <Compile Include="public\scripts\Keys.js" />
+    <Compile Include="public\scripts\Player.js" />
+    <Compile Include="public\scripts\requestAnimationFrame.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\RvV.css" />
     <Content Include="README.md" />
     <Content Include="views\index.html" />
+    <Content Include="views\partial\game_partial.html" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="data\" />
-    <Folder Include="data\models\" />
-    <Folder Include="data\schemas\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\models\" />
+    <Folder Include="Data\schemas\" />
+    <Folder Include="Helpers\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\scripts\" />
     <Folder Include="public\stylesheets\" />
     <Folder Include="routes\" />
     <Folder Include="views\" />
+    <Folder Include="views\partial\" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsTools.targets" />
   <ProjectExtensions>

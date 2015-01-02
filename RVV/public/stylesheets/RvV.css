@@ -25,7 +25,9 @@ nav {
              -moz-transition: opacity 1s ease;
              -ms-transition: opacity 1s ease;
              -o-transition: opacity 1s ease;
-              transition: opacity 1s ease;   }
+              transition: opacity 1s ease; 
+              
+	}
         
     nav ul{
         list-style-type:none;
@@ -228,6 +230,9 @@ input[type="image"] {
    background: rgb(0, 0, 0); /* fallback color */
    background: rgba(0, 0, 0, 0.7);
    padding: 10px; 
+}
+#spel{
+    background-color: white;
 }
 
    

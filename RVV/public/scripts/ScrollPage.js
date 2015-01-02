@@ -55,11 +55,11 @@ function ScrollNaarStart() {
 function ScrollNaarRenners() {
     $('#Renners').goTo();
 }
+
 function ControllLocation() {
     var positie = $("body").scrollTop();
-    console.log((positie+1) + "  " + ($("#Parcours").offset().top) + "     " + $("#over").offset().top);
-
-    if (positie >= 0 && positie < $("#over").offset().top) {
+    
+   if (positie >= 0 && positie < $("#over").offset().top) {
         $("nav ul").children('li').removeClass("active");
         //$("#controls span").removeClass("selected");
         $("nav ul li:first-of-type").addClass("active");

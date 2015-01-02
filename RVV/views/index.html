@@ -95,12 +95,18 @@
         <input type="hidden" id="flandriens" value="<%= JSON.stringify(flandriens) %>">       
     </section>
     <section id="spel">
-
+        <%- include partial/game_partial.html %>
     </section>
 
     
     <script src="scripts/ScrollPage.js"></script>
     <script src="scripts/Parcours.js"></script>
     <script src="scripts/Flandriens.js"></script>
+
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>    
+    <script src="scripts/Player.js"></script>
+    <script src="scripts/game.js"></script>
+    
+
 </body>
 </html>
