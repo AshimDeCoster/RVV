@@ -6,6 +6,7 @@ $(document).ready(function () {
     var btnNaarParcours = $('#btnNaarParcours');
     var linkParcours = $('a[href="#Parcours"]');
     var linkRenners = $('a[href="#Renners"]');
+    var hamburgerbutton = $('label[for="nav-trigger"]');
     
     btnNaarOver.click(function () { 
         ScrollNaarOver();
@@ -26,19 +27,17 @@ $(document).ready(function () {
         ScrollNaarRenners();
     });
     $(document).on('scroll', function () {
-        ControllLocation();
+        ControlLocation();
     });
-    
 });
 
 window.onscroll = function (event) {
     var scroll = parseInt($(window).scrollTop());
-    
-    if(scroll > 80) 
-        $('nav').addClass("f-nav");
-    
+        
+    if (scroll > 80)
+        $('nav').addClass("f-nav");    
     else
-        $('nav').removeClass("f-nav");
+        $('nav').removeClass("f-nav");    
 }
 
 
@@ -50,18 +49,17 @@ function ScrollNaarParcours() {
     $('#Parcours').goTo();
 }
 function ScrollNaarStart() {
-    $('#Startpagina').goTo();
+    $("html, body").animate({ scrollTop: 0 }, "slow");
 }
 function ScrollNaarRenners() {
     $('#Renners').goTo();
 }
 
-function ControllLocation() {
+function ControlLocation() {
     var positie = $("body").scrollTop();
     
    if (positie >= 0 && positie < $("#over").offset().top) {
         $("nav ul").children('li').removeClass("active");
-        //$("#controls span").removeClass("selected");
         $("nav ul li:first-of-type").addClass("active");
        
     }
@@ -80,13 +78,8 @@ function ControllLocation() {
         
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().next().addClass("active");
-    }
-    
-
-    
-   
+    }   
 }
-
 (function ($) {
     $.fn.goTo = function () {
         $('html, body').animate({
