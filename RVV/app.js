@@ -38,6 +38,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/mobiel', routes.mobiel);
 app.get('/helloworld', function (req, res) {    
  
     

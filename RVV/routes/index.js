@@ -15,4 +15,14 @@ exports.index = function (req, res) {
     });    
 };
 
+exports.mobiel = function (req, res) {
+
+    infoParcours.find({}, function (err, info_parcours) {
+        flandriens.find({}, function (err, docs) {
+            res.render('mobiel', { title: 'De Ronde van Vlaanderen', info_parc: JSON.stringify(info_parcours), flandriens: docs });
+
+        });
+    });
+};
+
 
