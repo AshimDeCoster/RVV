@@ -5,11 +5,13 @@ var socket, players;
 function init() {
     players = [];
     console.log("socket initialized");
-    socket = io.listen(8000);
+    socket = io.listen(3000);
+    
     //console.log(socket);
     //gebruik enkel WebSocket
     // socket.configure(function () {
-        socket.set("transports", ["websocket"]);
+    //socket.set("transports", ["websocket"]);
+    socket.set('transports', ['websocket', 'xhr-polling']);
         socket.set("log level", 2);
    // });
 

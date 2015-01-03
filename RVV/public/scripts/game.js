@@ -7,12 +7,14 @@ $(document).ready(function () {
     init();    
 });
 
-function init() {    
+function init() {
+       
     canvas = document.getElementById("gameCanvas");
     ctx = canvas.getContext("2d");
-    localPlayer = new Player(0);    
+    localPlayer = new Player(2);    
     // Start listening for events   
-    socket = io.connect("http://localhost:8000", { port: 8000, transports: ["websocket"] });   
+     socket = io.connect("http://localhost:28");  
+    //socket = io.connect();  
     setEventHandlers();
     remotePlayers = [];    
 };
@@ -35,17 +37,16 @@ function onSocketDisconnect() {
     console.log("Disconnected from socket server");
 };
 
-function onNewPlayer(data) {
-    
+function onNewPlayer(data) {   
     console.log("New player connected: " + data.id);
     var newPlayer = new Player(data.x);
     newPlayer.id = data.id;
     remotePlayers.push(newPlayer);
-
+    
 };
 
 function onMovePlayer(data) {
-
+    console.log("New player move connected: " + data.id);
 };
 
 function onRemovePlayer(data) {
