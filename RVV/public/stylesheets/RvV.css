@@ -235,7 +235,7 @@ input[type="image"] {
     background-color: white;
 }
 
-@media only screen and (max-device-width: 480px) {
+/*@media only screen and (max-device-width: 480px) {
    body{
        height:100%;
    }
@@ -337,7 +337,7 @@ input[type="image"] {
     padding:12px 0 0 0;
     background-color:none;
 }
-}
+}*/
    
 
 

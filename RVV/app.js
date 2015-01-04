@@ -66,33 +66,43 @@ function onSocketConnection(client) {
     client.on("disconnect", onClientDisconnect);
     client.on("new player", onNewPlayer);
     client.on("move player", onMovePlayer);
-    client.on("remove player", onreMovePlayer);
+    client.on("remove player", onReMovePlayer);
 };
 function onClientDisconnect() {
     util.log("Player has disconnected: " + this.id);
 };
 
 function onNewPlayer(data) {
-    console.log("New player created " + data.x);
+    
     var newPlayer = new Player(data.x);
     newPlayer.id = this.id;
-    this.broadcast.emit("new player", { id: newPlayer.id, x: newPlayer.getX() });
-    var i, existingPlayer;
-    
-    for (i = 0; i < players.length; i++) {       
+    //
+    //var i, existingPlayer;    
+    /*for (i = 0; i < players.length; i++) {       
         existingPlayer = players[i];
-        this.emit("new player", { id: existingPlayer.id, x: existingPlayer.getX() });
-    };
- 
+        this.emit("new player", { id: newPlayer.id, x: newPlayer.getX(), pos: players.length });
+    };*/ 
     players.push(newPlayer);
+    this.emit("new player", { id: newPlayer.id, x: newPlayer.getX() });
+    this.broadcast.emit("global player", { id: newPlayer.id, x: newPlayer.getX() });    
+    console.log("New player created " + players.length);
 };
 
 function onMovePlayer(data) {
-    console.log("New move registered " + data.x);
+    
+    var movePlayer = players[playerById(data.id)];
+    players[playerById(data.id)].setX(data.x);
+    console.log("New move registered " + players[playerById(data.id)].x + "  " + movePlayer.id);
+    if (!movePlayer) {
+        console.log("Player not found: " + data.id);
+        return;
+    }    ;
+    
+    
     this.emit("move player", { x:data.x  });
 };
-function onreMovePlayer(data) {
-    var removePlayer = playerById(this.id);
+function onReMovePlayer(data) {
+    var removePlayer = players[playerById(this.id)];
     
     if (!removePlayer) {
         util.log("Player not found: " + this.id);
@@ -100,6 +110,7 @@ function onreMovePlayer(data) {
     }    ;
     
     players.splice(players.indexOf(removePlayer), 1);
+    console.log("player removed " + removePlayer.id);
     this.broadcast.emit("remove player", { id: this.id });
 
 };
@@ -107,7 +118,7 @@ function playerById(id) {
     var i;
     for (i = 0; i < players.length; i++) {
         if (players[i].id == id)
-            return players[i];
+            return i;
     }    ;
     
     return false;

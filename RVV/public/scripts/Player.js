@@ -8,6 +8,9 @@ var Player = function(startX) {
     
     var getX = function () {
         return x;
+    };
+    var getID = function () {
+        return id;
     };    
     var setX = function (newX) {
         x = newX;
@@ -24,7 +27,9 @@ var Player = function(startX) {
 		update: update,
         draw: draw,
         getX: getX,
-        setX: setX
+        setX: setX,
+        getID: getID
+        
 
 	}
 };

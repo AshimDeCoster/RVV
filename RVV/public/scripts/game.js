@@ -9,14 +9,18 @@ $(document).ready(function () {
 var btnTest = $('#test');
 btnTest.click(function () {
     localPlayer.setX((localPlayer.getX() + 1));
-    socket.emit("move player", { x: localPlayer.getX() });
+    socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id });
 });
+window.onbeforeunload = function () {
+console.log(localPlayer.getID());
+    socket.emit("remove player", { id: localPlayer.id });
+};
 
 function init() {
        
     //canvas = document.getElementById("gameCanvas");
     //ctx = canvas.getContext("2d");
-    localPlayer = new Player(2);    
+    localPlayer = new Player(0);    
     // Start listening for events   
      socket = io.connect("http://localhost:1338");  
     //socket = io.connect();  
@@ -29,7 +33,9 @@ var setEventHandlers = function() {
 	socket.on("disconnect", onSocketDisconnect);
 	socket.on("new player", onNewPlayer);
 	socket.on("move player", onMovePlayer);
-	socket.on("remove player", onRemovePlayer);
+    socket.on("remove player", onRemovePlayer);
+    socket.on("global player", onNewPlayerGlobal);
+    
 };
 
 function onSocketConnected() {
@@ -40,14 +46,26 @@ function onSocketConnected() {
 
 function onSocketDisconnect() {
     console.log("Disconnected from socket server");
+    socket.emit("remove player", { id: localPlayer.getID() });
 };
 
 function onNewPlayer(data) {   
-    console.log("New player connected: " + data.id);
+    
+    var newPlayer = new Player(data.x);
+    newPlayer.id = data.id;
+    
+    console.log("New player connected: " + data.id + "   " + localPlayer.id);    
+    localPlayer = newPlayer ;
+    console.log(localPlayer.id);   
+   
+};
+function onNewPlayerGlobal(data) {
+    
     var newPlayer = new Player(data.x);
     newPlayer.id = data.id;
     remotePlayers.push(newPlayer);
-    
+    console.log("New Global player connected: " + data.id);  
+   
 };
 
 function onMovePlayer(data) {
@@ -63,6 +81,7 @@ function onRemovePlayer(data) {
     }    ;
     
     remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
+    console.log("removed " + remotePlayers.length);
 };
 
 function draw() {
