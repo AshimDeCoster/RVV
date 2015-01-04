@@ -10,12 +10,12 @@ var http = require('http');
 var path = require('path');
 var app = express();
 
-//var server = http.createServer(app);
-var io = require('socket.io').listen(28);
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 var util = require("util"), Player = require("./Helpers/Player").Player;
 var players;
 players = [];
-//server.listen(1337);
+server.listen(1338);
 //var spel = require("./Helpers/Game_server");
 
 // all environments
@@ -79,8 +79,7 @@ function onNewPlayer(data) {
     this.broadcast.emit("new player", { id: newPlayer.id, x: newPlayer.getX() });
     var i, existingPlayer;
     
-    for (i = 0; i < players.length; i++) {
-        console.log("test"+players.length);
+    for (i = 0; i < players.length; i++) {       
         existingPlayer = players[i];
         this.emit("new player", { id: existingPlayer.id, x: existingPlayer.getX() });
     };
@@ -89,8 +88,8 @@ function onNewPlayer(data) {
 };
 
 function onMovePlayer(data) {
-    
-
+    console.log("New move registered " + data.x);
+    this.emit("move player", { x:data.x  });
 };
 function onreMovePlayer(data) {
     var removePlayer = playerById(this.id);

@@ -6,14 +6,19 @@ var canvas,
 $(document).ready(function () {
     init();    
 });
+var btnTest = $('#test');
+btnTest.click(function () {
+    localPlayer.setX((localPlayer.getX() + 1));
+    socket.emit("move player", { x: localPlayer.getX() });
+});
 
 function init() {
        
-    canvas = document.getElementById("gameCanvas");
-    ctx = canvas.getContext("2d");
+    //canvas = document.getElementById("gameCanvas");
+    //ctx = canvas.getContext("2d");
     localPlayer = new Player(2);    
     // Start listening for events   
-     socket = io.connect("http://localhost:28");  
+     socket = io.connect("http://localhost:1338");  
     //socket = io.connect();  
     setEventHandlers();
     remotePlayers = [];    
@@ -46,7 +51,7 @@ function onNewPlayer(data) {
 };
 
 function onMovePlayer(data) {
-    console.log("New player move connected: " + data.id);
+    console.log("New move registered: "+ data.x);
 };
 
 function onRemovePlayer(data) {
@@ -62,15 +67,15 @@ function onRemovePlayer(data) {
 
 function draw() {
     // Wipe the canvas clean
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     // Draw the local player
-    localPlayer.draw(ctx);
+    //localPlayer.draw(ctx);
 
-    var i;
-    for (i = 0; i < remotePlayers.length; i++) {
-        remotePlayers[i].draw(ctx);
-    }    ;
+    //var i;
+    //for (i = 0; i < remotePlayers.length; i++) {
+    //    remotePlayers[i].draw(ctx);
+    //}    ;
 };
 function playerById(id) {
     var i;
