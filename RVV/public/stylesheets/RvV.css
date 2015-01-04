@@ -232,8 +232,34 @@ input[type="image"] {
    padding: 10px; 
 }
 #spel{
-    background-color: white;
+    width:100%;
+    position:relative;
 }
+#speler1{
+  width: 25%;
+  position: absolute;
+  left: 25%;
+  bottom: 4%;
+
+   -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+#speler2{
+  width: 25%;
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+
+  -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
 
 /*@media only screen and (max-device-width: 480px) {
    body{
