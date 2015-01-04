@@ -15,6 +15,7 @@ var io = require('socket.io').listen(server);
 var util = require("util"), Player = require("./Helpers/Player").Player;
 var players;
 players = [];
+var clients = {};
 server.listen(1338);
 //var spel = require("./Helpers/Game_server");
 
@@ -61,12 +62,16 @@ http.createServer(app).listen(app.get('port'), function () {
 io.sockets.on('connection',onSocketConnection);  
 
 function onSocketConnection(client) {
-   
+    clients[client.id] = client;   
     util.log("New player has connected: " + client.id);
     client.on("disconnect", onClientDisconnect);
     client.on("new player", onNewPlayer);
     client.on("move player", onMovePlayer);
     client.on("remove player", onReMovePlayer);
+    client.on("player ready", onPlayerReady);
+    client.on("player notready", onPlayerNotReady);
+    client.on("race", onRace);
+    
 };
 function onClientDisconnect() {
     util.log("Player has disconnected: " + this.id);
@@ -87,7 +92,10 @@ function onNewPlayer(data) {
     this.broadcast.emit("global player", { id: newPlayer.id, x: newPlayer.getX() });    
     console.log("New player created " + players.length);
 };
-
+function onRace(data) {
+    var opp = clients[data.opp];    
+    opp.emit("race", { id: data.id });
+}
 function onMovePlayer(data) {
     
     var movePlayer = players[playerById(data.id)];
@@ -96,11 +104,23 @@ function onMovePlayer(data) {
     if (!movePlayer) {
         console.log("Player not found: " + data.id);
         return;
-    }    ;
-    
-    
-    this.emit("move player", { x:data.x  });
+    }
+    var opp = clients[data.opp];
+    opp.emit("move player", { x: data.x, id: data.id });    
+    this.emit("move player", { x:data.x, id: data.id});
 };
+function onPlayerReady(data) {
+    if (typeof(players[playerById(data.id)]) != "undefined" && typeof (players[playerById(data.myId)]) != "undefined") {
+        players[playerById(data.id)].setReady(false);
+        players[playerById(data.myId)].setReady(false);        
+        var opp = clients[data.id];
+        opp.emit("set opponent", { id: data.myId });
+    }
+}
+function onPlayerNotReady(data) {
+    players[playerById(data.id)].setReady(true);
+    console.log("Player " + data.id + players[playerById(data.id)].getReady());
+}
 function onReMovePlayer(data) {
     var removePlayer = players[playerById(this.id)];
     
