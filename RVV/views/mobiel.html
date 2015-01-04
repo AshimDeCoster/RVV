@@ -65,17 +65,17 @@
     </section>
 
     <section id="Renners">
-        <div>            
+        <div>
+
             <img id="foto1" src="images/Flandriens/<%= flandriens[0].img %>" alt="<%= flandriens[0].naam %>" class="afbeelding_renners" />
             <h1><span id="span1"><%= flandriens[0].naam %></span></h1>
             <div id="div1">
                 <h2><%= flandriens[0].naam %></h2>
-                <span><%= flandriens[0].carriere %></span><br /><br />
                 <p><%= flandriens[0].beschrijving %></p>
+                <span><%= flandriens[0].carriere %></span>
             </div>
-            <img src="images/arrow_right.png" alt="arrow_openinfo_indication" />
         </div>
-        <!--<div>
+        <div>
             <img id="foto2" src="images/Flandriens/<%= flandriens[1].img %>" alt="<%= flandriens[1].naam %>" class="afbeelding_renners" />
             <h1><span id="span2"><%= flandriens[1].naam %></span></h1>
             <div id="div2">
@@ -92,7 +92,7 @@
                 <p><%= flandriens[2].beschrijving %></p>
                 <span><%= flandriens[2].carriere %></span>
             </div>
-        </div>-->
+        </div>
         <input type="hidden" id="flandriens" value="<%= JSON.stringify(flandriens) %>">
     </section>
 
