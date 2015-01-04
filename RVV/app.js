@@ -92,7 +92,7 @@ function onMovePlayer(data) {
     
     var movePlayer = players[playerById(data.id)];
     players[playerById(data.id)].setX(data.x);
-    console.log("New move registered " + players[playerById(data.id)].x + "  " + movePlayer.id);
+    console.log("New move registered " + players[playerById(data.id)].getX() + "  " + movePlayer.id);
     if (!movePlayer) {
         console.log("Player not found: " + data.id);
         return;

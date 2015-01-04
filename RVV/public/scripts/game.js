@@ -1,16 +1,28 @@
 ﻿var localPlayer,
     remotePlayers,
-    socket;
+    socket, opponent;
 var canvas,			
     ctx;
 $(document).ready(function () {
-    init();    
+    init();
+    
+    
 });
 var btnTest = $('#test');
 btnTest.click(function () {
-    localPlayer.setX((localPlayer.getX() + 1));
-    socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id });
+    //localPlayer.setX((localPlayer.getX() + 1));
+    //socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id });
+    
+    if (!opponent === undefined) {
+        alert(opponent.id);
+    }
+    else {
+        alert("please wait");
+    }
+
+
 });
+
 window.onbeforeunload = function () {
 console.log(localPlayer.getID());
     socket.emit("remove player", { id: localPlayer.id });
@@ -64,7 +76,9 @@ function onNewPlayerGlobal(data) {
     var newPlayer = new Player(data.x);
     newPlayer.id = data.id;
     remotePlayers.push(newPlayer);
-    console.log("New Global player connected: " + data.id);  
+    console.log("New Global player connected: " + data.id);
+    if(opponent === undefined)
+        opponent = newPlayer
    
 };
 
@@ -105,4 +119,20 @@ function playerById(id) {
     
     return false;
 };
+function seekPlayer() {
+    var i;
+    var found = false;
+    while (found == false) {
+        for (i = 0; i < remotePlayers.length; i++) {
+            if (remotePlayers[i].getReady() == true && remotePlayers[i].id != localPlayer.id) {
+                found = true;
+            }
+        }
+    }
+    if(found == true)
+        return remotePlayers[i];
+
+    return false;
+       
+}
 
