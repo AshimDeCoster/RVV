@@ -13,11 +13,12 @@ btnTest.click(function () {
     //localPlayer.setX((localPlayer.getX() + 1));
     //socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id });
     
-    if (!opponent === undefined) {
-        alert(opponent.id);
+    if (opponent === undefined) {
+        
+        alert("please wait");
     }
     else {
-        alert("please wait");
+        alert(opponent.id);
     }
 
 
@@ -34,7 +35,7 @@ function init() {
     //ctx = canvas.getContext("2d");
     localPlayer = new Player(0);    
     // Start listening for events   
-     socket = io.connect("http://localhost:1338");  
+     socket = io.connect("http://178.116.189.17:1338");  
     //socket = io.connect();  
     setEventHandlers();
     remotePlayers = [];    
@@ -77,8 +78,10 @@ function onNewPlayerGlobal(data) {
     newPlayer.id = data.id;
     remotePlayers.push(newPlayer);
     console.log("New Global player connected: " + data.id);
-    if(opponent === undefined)
-        opponent = newPlayer
+    if (opponent === undefined) {
+        opponent = newPlayer;
+        console.log("heel lalala " + opponent.id);
+    }
    
 };
 
