@@ -239,15 +239,23 @@ input[type="image"] {
 }
 #play {
     width:100%;
-    margin-top:500%;
+    margin-top:20%;
 }
 #weg {
     max-width:100%;
+    padding-top:20%;
 }
 #spel{
     width:100%;
     position:relative;
 }
+    #spel p {
+        color: white;
+        left: 0;
+        font-size: 1.2em;
+        position: absolute;
+        margin: -19% 0 0 44%;
+    }
 #speler1{
   width: 25%;
   position: absolute;
