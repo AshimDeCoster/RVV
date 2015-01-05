@@ -17,12 +17,14 @@ $('#play').click(function () {
     }
     else {
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-        socket.emit("race", { id: localPlayer.id, opp: opponent.id });
+        var rand = Math.random() * (5 - 1) + 1;
+        socket.emit("race", { id: localPlayer.id, opp: opponent.id, rand: rand });
     }
 
 });
 $('#speler1').click(function () {
     
+
     if ($('#btnSpeler2').val() == "START!") {
         console.log(typeof (localPlayer));
         localPlayer.setX((localPlayer.getX() + 1));
@@ -41,7 +43,9 @@ function init() {
     //ctx = canvas.getContext("2d");
     localPlayer = new Player(4);
     // Start listening for events   
-    socket = io.connect("http://178.116.189.17:1338");
+
+    socket = io.connect("http://localhost:1338");
+
     //socket = io.connect();  
     setEventHandlers();
     remotePlayers = [];
@@ -79,8 +83,10 @@ function onEndGame(data) {
 }
 function onRace(data) {
     console.log(data.id + " is ready to race");
-    $("#btnSpeler2").prop('value', "START!");
+    $("#btnSpeler2").prop('value', "Klaar !!");
+    $("#speler2").attr("src", data.rand+".gif");   
 }
+
 function onSetOpponent(data) {
     var play = new Player(4);
     play.id = data.id;
@@ -133,8 +139,9 @@ function onMovePlayer(data) {
     var positie = $("body").scrollTop();
     if (data.id == localPlayer.id) {
         if (data.x <= 71) {
-            $("html, body").animate({ scrollTop: (positie - (($('body').height() - window.innerHeight) * 0.007)) }, 50);
-            console.log(positie - (($('body').height() - window.innerHeight) * 0.007));
+
+
+            $("html, body").animate({ scrollTop: (positie - (($('body').height() - window.innerHeight) * 0.007)) }, 50);           
             $('#speler1').animate({ bottom: data.x + "%" }, 50);
         }
         else {
@@ -143,7 +150,6 @@ function onMovePlayer(data) {
     }
     else if (data.id == opponent.id) {
         if (data.x <= 71) {
-            //$("html, body").animate({ scrollTop: (positie - 50) }, 50);
             $('#speler2').animate({ bottom: data.x + "%" }, 50);
         }
         else {
