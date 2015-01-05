@@ -30,8 +30,8 @@
             <h1><%= title %></h1>
             <h2>vroeger en nu</h2>
         </header>
-        <img src="images/achtergrond.jpg" alt="homeBackground"/>
-        <input type="image" src="images/button_scroll_down_geel.png" alt="submit" id="btnNaarOver"/>
+        <img src="images/achtergrond.jpg" alt="homeBackground" />
+        <input type="image" src="images/button_scroll_down_geel.png" alt="submit" id="btnNaarOver" />
     </section>
     <section id="over">
         <div>
@@ -47,7 +47,7 @@
         </div>
     </section>
 
-    <section id="Parcours">        
+    <section id="Parcours">
         <img id="parcourImg" src="images/Parcours/Parcours_1913.jpg" alt="Parcours_1913" class="afbeelding_parcours" />
         <div id="info"><%= info_parc %></div>
         <p id="controls">
@@ -62,15 +62,13 @@
         <input id="btnToonInfo" type="image" src="images/info_icon.png" />
         <div id="infoOverParcours">
             <p></p>
-            <ul>
-            </ul>
+            <ul></ul>
             <p>Klik terug op info om dit venster te sluiten.</p>
         </div>
     </section>
+       <section id="Renners">
 
-    <section id="Renners">        
         <div>
-           
             <img id="foto1" src="images/Flandriens/<%= flandriens[0].img %>" alt="<%= flandriens[0].naam %>" class="afbeelding_renners" />
             <h1><span id="span1"><%= flandriens[0].naam %></span></h1>
             <div id="div1">
@@ -82,13 +80,13 @@
         <div>
             <img id="foto2" src="images/Flandriens/<%= flandriens[1].img %>" alt="<%= flandriens[1].naam %>" class="afbeelding_renners" />
             <h1><span id="span2"><%= flandriens[1].naam %></span></h1>
-            <div id ="div2">
+            <div id="div2">
                 <h2 id="h2"><%= flandriens[1].naam %></h2>
                 <span><%= flandriens[1].carriere %></span><br /><br />
                 <p><%= flandriens[1].beschrijving %></p>
             </div>
         </div>
-        <div >
+        <div>
             <img id="foto3" src="images/Flandriens/<%= flandriens[2].img %>" alt="<%= flandriens[2].naam %>" class="afbeelding_renners" />
             <h1><span id="span3"><%= flandriens[2].naam %></span></h1>
             <div id="div3">
@@ -97,19 +95,28 @@
                 <p><%= flandriens[2].beschrijving %></p>
             </div>
         </div>
-        <input type="hidden" id="flandriens" value="<%= JSON.stringify(flandriens) %>">       
+        <input type="hidden" id="flandriens" value="<%= JSON.stringify(flandriens) %>">
     </section>
-
-   
 
     <section id="spel">
-        <%- include partial/game_partial.html %>        
+        <%- include partial/game_partial.html %>
     </section>
+<<<<<<< HEAD
     
     <script src="scripts/ScrollPage.js"></script>
     <script src="scripts/Parcours.js"></script>
     <script src="scripts/Flandriens.js"></script>   
 
     
+=======
+
+    <script src="scripts/ScrollPage.js"></script>
+    <script src="scripts/Parcours.js"></script>
+    <script src="scripts/Flandriens.js"></script>
+
+
+
+
+>>>>>>> 3abeffaddd65368e6e2781b374c068b84bd18549
 </body>
 </html>

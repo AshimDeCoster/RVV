@@ -93,10 +93,9 @@ function onNewPlayer(data) {
     this.broadcast.emit("global player", { id: newPlayer.id, x: newPlayer.getX() });    
     console.log("New player created " + players.length);
 };
-function onRace(data) {
-    
+function onRace(data) {    
     var opp = clients[data.opp];    
-    opp.emit("race", { id: data.id });
+    opp.emit("race", { id: data.id, rand: data.rand });
 }
 function onMovePlayer(data) {
     
