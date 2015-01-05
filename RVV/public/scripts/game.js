@@ -21,9 +21,9 @@ $('#play').click(function () {
     }
 
 });
-$('#weg').click(function () {
+$('#speler1').click(function () {
    
-    if ($('#btnSpeler2').val() == "Klaar !!") {
+    if ($('#btnSpeler2').val() == "Start !!") {
         console.log(typeof (localPlayer));
         localPlayer.setX((localPlayer.getX() + 1));
         socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id, opp: opponent.id });
@@ -56,11 +56,26 @@ var setEventHandlers = function() {
     socket.on("global player", onNewPlayerGlobal);
     socket.on("set opponent", onSetOpponent);
     socket.on("race", onRace);
+    socket.on("end game", onEndGame);
     
 };
+function onEndGame(data) {
+    if (data.isWon == true) {
+        alert("je bent gewonnen");
+        opponent = null;
+        $('#speler1').animate({ bottom: '4%' }, 50);
+        $('#speler2').animate({ bottom: '4%' }, 50); 
+    }
+    else if (data.isWon == false) {
+        alert("je hebt verloren");
+        opponent = null;
+        $('#speler1').animate({ bottom: '4%' }, 50);
+        $('#speler2').animate({ bottom: '4%' }, 50); 
+    } else { } 
+}
 function onRace(data) {
     console.log(data.id + " is ready to race");
-    $("#btnSpeler2").prop('value', "Klaar !!");
+    $("#btnSpeler2").prop('value', "Start !!");
    
 }
 function onSetOpponent(data) {
@@ -114,14 +129,22 @@ function onMovePlayer(data) {
     console.log("New move registered: " + data.x + "door: " + data.id);
     var positie = $("body").scrollTop();
     if (data.id == localPlayer.id) {
-        
-        $("html, body").animate({ scrollTop: (positie -50)  }, 50);
-        $('#speler1').animate({ bottom: data.x + "%" }, 50);
-        console.log(positie - 50);
+        if (data.x <= 71) {
+            $("html, body").animate({ scrollTop: (positie - 50) }, 50);
+            $('#speler1').animate({ bottom: data.x + "%" }, 50);            
+        }
+        else {          
+            socket.emit("end game", { win: data.id, los: opponent.id });
+        }
     }
     else if (data.id == opponent.id) {
-        $("html, body").animate({ scrollTop: (positie -50)  }, 50);
-        $('#speler2').animate({ bottom: data.x + "%" }, 50);
+        if (data.x <= 71) {
+            $("html, body").animate({ scrollTop: (positie - 50) }, 50);
+            $('#speler2').animate({ bottom: data.x + "%" }, 50);
+        }
+        else {       
+            socket.emit("end game", { win: data.id, los: localPlayer.id  });
+        }
     } else { }
 };
 
@@ -130,31 +153,22 @@ function onRemovePlayer(data) {
     
     if (!removePlayer) {
         console.log("Player not found: " + data.id);
+        if (typeof (opponent) != undefined && opponent != null) {
+            if (opponent.id == data.id) {
+                opponent = null;
+                $('#play').prop('disabled', true);
+            }
+        }
+        return;
+    };
+    if (typeof (opponent) != undefined && opponent != null) {
         if (opponent.id == data.id) {
             opponent = null;
             $('#play').prop('disabled', true);
         }
-        return;
-    }    ;
-    if (opponent.id == data.id) {
-        opponent = null;
-        $('#play').prop('disabled', true);
     }
     remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
     console.log("removed " + remotePlayers.length);
-};
-
-function draw() {
-    // Wipe the canvas clean
-    //ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    // Draw the local player
-    //localPlayer.draw(ctx);
-
-    //var i;
-    //for (i = 0; i < remotePlayers.length; i++) {
-    //    remotePlayers[i].draw(ctx);
-    //}    ;
 };
 function playerById(id) {
     var i;

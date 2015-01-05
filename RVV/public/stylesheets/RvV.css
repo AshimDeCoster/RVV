@@ -177,17 +177,23 @@ input[type="image"] {
 
 #Renners{
     padding:0;
-    margin:0;
+    margin:0;   
     width:100%;
+    background-color:#000;
+    z-index:1;
 }
 .afbeelding_renners{
         width:100%;
+       
 }
+
 #Renners div{
     width: 33%;
     float:left;
     position: relative; 
     margin-right:0.33%;
+   background-color:#000;
+        z-index:1;
     
 }
 #Renners div:last-of-type{
@@ -234,6 +240,7 @@ input[type="image"] {
 #spel{
     width:100%;
     position:relative;
+    z-index: -1;
 }
 #speler1{
   width: 25%;

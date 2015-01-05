@@ -71,6 +71,7 @@ function onSocketConnection(client) {
     client.on("player ready", onPlayerReady);
     client.on("player notready", onPlayerNotReady);
     client.on("race", onRace);
+    client.on("end game", onEndGame);
     
 };
 function onClientDisconnect() {
@@ -133,7 +134,13 @@ function onReMovePlayer(data) {
     console.log("player removed " + removePlayer.id);
     this.broadcast.emit("remove player", { id: this.id });
 
-};
+}
+function onEndGame(data) {
+    var win = clients[data.win];
+    win.emit("end game", { isWon: true });
+    var los = clients[data.los];
+    los.emit("end game", { isWon: false });
+}
 function playerById(id) {
     var i;
     for (i = 0; i < players.length; i++) {

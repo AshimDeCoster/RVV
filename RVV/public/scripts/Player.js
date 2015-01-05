@@ -4,9 +4,8 @@
 var Player = function(startX) {
 	var x = startX,       
         id,
-		moveAmount = 0, isReady;
-        isReady = true;
-    
+	   isReady = true;
+           
     var getX = function () {
         return x;
     };
@@ -21,18 +20,8 @@ var Player = function(startX) {
     };
     var setReady = function (newIsReady) {
         isReady = newIsReady;
-    };    
-	var update = function() {
-        moveAmount++;
-	};
-
-	var draw = function(ctx) {
-		ctx.fillRect(x-5, y-5, 10, 10);
-	};
-
-	return {
-		update: update,
-        draw: draw,
+    };
+    return {		
         getX: getX,
         setX: setX,
         getReady: getReady,
