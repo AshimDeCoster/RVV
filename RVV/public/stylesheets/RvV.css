@@ -182,7 +182,6 @@ input[type="image"] {
     margin:0;   
     width:100%;
     background-color:#000;
-    z-index:1;
 }
 .afbeelding_renners{
         width:100%;
@@ -195,7 +194,6 @@ input[type="image"] {
     position: relative; 
     margin-right:0.33%;
    background-color:#000;
-        z-index:1;
     
 }
 #Renners div:last-of-type{
@@ -239,10 +237,16 @@ input[type="image"] {
    background: rgba(0, 0, 0, 0.7);
    padding: 10px; 
 }
+#play {
+    width:100%;
+    margin-top:500%;
+}
+#weg {
+    max-width:100%;
+}
 #spel{
     width:100%;
     position:relative;
-    z-index: -1;
 }
 #speler1{
   width: 25%;
