@@ -8,6 +8,19 @@ $(document).ready(function () {
     
    
 });
+<<<<<<< HEAD
+var btnTest = $('#test');
+btnTest.click(function () {
+    //localPlayer.setX((localPlayer.getX() + 1));
+    //socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id });
+    
+    if (opponent === undefined) {
+        
+        alert("please wait");
+    }
+    else {
+        alert(opponent.id);
+=======
 
 $('#play').click(function () {
    
@@ -18,6 +31,7 @@ $('#play').click(function () {
     else {
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
         socket.emit("race", { id: localPlayer.id, opp: opponent.id });
+>>>>>>> 1da66ca3eba1d062a06278643c5c8a75f3610b98
     }
 
 });
@@ -41,7 +55,7 @@ function init() {
     //ctx = canvas.getContext("2d");
     localPlayer = new Player(4);    
     // Start listening for events   
-     socket = io.connect("http://localhost:1338");  
+     socket = io.connect("http://178.116.189.17:1338");  
     //socket = io.connect();  
     setEventHandlers();
     remotePlayers = [];    
@@ -114,6 +128,12 @@ function onNewPlayerGlobal(data) {
     newPlayer.id = data.id;
     remotePlayers.push(newPlayer);
     console.log("New Global player connected: " + data.id);
+<<<<<<< HEAD
+    if (opponent === undefined) {
+        opponent = newPlayer;
+        console.log("heel lalala " + opponent.id);
+    }
+=======
     if (opponent === undefined || opponent == null) {
         opponent = newPlayer;
         socket.emit("player ready", { id: opponent.id, myId: localPlayer.id  });        
@@ -122,6 +142,7 @@ function onNewPlayerGlobal(data) {
         $('#play').prop('disabled', false);
     }
         
+>>>>>>> 1da66ca3eba1d062a06278643c5c8a75f3610b98
    
 };
 
