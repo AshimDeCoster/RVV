@@ -182,14 +182,10 @@ input[type="image"] {
     margin:0;   
     width:100%;
     background-color:#000;
-<<<<<<< HEAD
-   
-=======
->>>>>>> 3abeffaddd65368e6e2781b374c068b84bd18549
+    height:100%;
 }
 .afbeelding_renners{
-        width:100%;
-       
+    width:100%;  
 }
 
 #Renners div{
@@ -197,12 +193,7 @@ input[type="image"] {
     float:left;
     position: relative; 
     margin-right:0.33%;
-   background-color:#000;
-<<<<<<< HEAD
-       
-=======
->>>>>>> 3abeffaddd65368e6e2781b374c068b84bd18549
-    
+    background-color:#000;
 }
 #Renners div:last-of-type{
     margin:0;
@@ -213,6 +204,7 @@ input[type="image"] {
    bottom: 50px; 
    left: 0; 
    width: 100%; 
+   overflow:hidden;
 }
 #Renners div div {    
    position: absolute; 
@@ -227,8 +219,6 @@ input[type="image"] {
    padding-left: 20%;     
    padding-top:20%;
    height:100%;
-   
-   
 }
 #Renners div span {
     font: bold 1.0em Helvetica, Sans-Serif;
@@ -245,24 +235,16 @@ input[type="image"] {
    background: rgba(0, 0, 0, 0.7);
    padding: 10px; 
 }
-<<<<<<< HEAD
-=======
 #play {
     width:100%;
-    margin-top:20%;
+    margin:0;
 }
->>>>>>> 3abeffaddd65368e6e2781b374c068b84bd18549
 #weg {
     max-width:100%;
-    padding-top:20%;
 }
 #spel{
     width:100%;
     position:relative;
-<<<<<<< HEAD
-   
-=======
->>>>>>> 3abeffaddd65368e6e2781b374c068b84bd18549
 }
     #spel p {
         color: white;
@@ -270,6 +252,10 @@ input[type="image"] {
         font-size: 1.2em;
         position: absolute;
         margin: -19% 0 0 44%;
+    }
+    #txt_start{
+        padding-left:4.5%;
+        display:none;
     }
 #speler1{
   width: 25%;
@@ -295,13 +281,32 @@ input[type="image"] {
     -ms-transform: rotate(90deg);
     transform: rotate(90deg);
 }
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
 
+.clearfix {
+    display: inline-block;
+}
+
+html[xmlns] .clearfix {
+    display: block;
+}
+
+* html .clearfix {
+    height: 1%;
+}
 
 @media only screen and (max-device-width: 480px) {
    body{
        height:100%;
    }
-   #spel,#Startpagina img[alt="homeBackground"]{
+   #spel{
        display:none;
    }
     nav ul li {

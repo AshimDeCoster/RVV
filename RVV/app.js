@@ -93,9 +93,19 @@ function onNewPlayer(data) {
     this.broadcast.emit("global player", { id: newPlayer.id, x: newPlayer.getX() });    
     console.log("New player created " + players.length);
 };
-function onRace(data) {    
-    var opp = clients[data.opp];    
-    opp.emit("race", { id: data.id, rand: data.rand });
+function onRace(data) {
+    
+    console.log("ik voor " + players[playerById(data.id)].getReady());
+    console.log("jij voor " + players[playerById(data.opp)].getReady());
+    players[playerById(data.id)].setReady(false);
+    console.log("ik na " + players[playerById(data.id)].getReady());
+    console.log("jij na " + players[playerById(data.opp)].getReady());
+
+    if (players[playerById(data.opp)].getReady() == false) {
+        var opp = clients[data.opp]; 
+        opp.emit("race", { id: data.id, rand: data.rand });
+        this.emit("race", { id: data.id, rand: data.rand });
+    }
 }
 function onMovePlayer(data) {
     
@@ -112,8 +122,8 @@ function onMovePlayer(data) {
 };
 function onPlayerReady(data) {
     if (typeof(players[playerById(data.id)]) != "undefined" && typeof (players[playerById(data.myId)]) != "undefined") {
-        players[playerById(data.id)].setReady(false);
-        players[playerById(data.myId)].setReady(false);        
+        //players[playerById(data.id)].setReady(false);
+        //players[playerById(data.myId)].setReady(false);        
         var opp = clients[data.id];
         opp.emit("set opponent", { id: data.myId });
     }

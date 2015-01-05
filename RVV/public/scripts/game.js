@@ -9,7 +9,7 @@ $(document).ready(function () {
    
 });
 
-$('#play').click(function () {
+$('#play').live('click', function (e) {
     
     console.log("test");
     if (opponent === undefined || opponent == null) {
@@ -17,7 +17,8 @@ $('#play').click(function () {
     }
     else {
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-        var rand = Math.random() * (5 - 1) + 1;
+        var rand = Math.floor(Math.random() * (5 - 1) + 1);
+        $("#speler1").attr("src", "/images/spel/" + rand + ".gif");   
         socket.emit("race", { id: localPlayer.id, opp: opponent.id, rand: rand });
     }
 
@@ -25,7 +26,7 @@ $('#play').click(function () {
 $('#speler1').click(function () {
     
 
-    if ($('#btnSpeler2').val() == "START!") {
+    if ($('#txt_start').is(":visible")) {
         console.log(typeof (localPlayer));
         localPlayer.setX((localPlayer.getX() + 1));
         socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id, opp: opponent.id });
@@ -44,7 +45,7 @@ function init() {
     localPlayer = new Player(4);
     // Start listening for events   
 
-    socket = io.connect("http://localhost:1338");
+    socket = io.connect("http://178.116.189.17:1338");
 
     //socket = io.connect();  
     setEventHandlers();
@@ -77,14 +78,16 @@ function onEndGame(data) {
         $('#speler2').animate({ bottom: '4%' }, 50);
     } else { }
     localPlayer.setX(4);
-    $("#btnSpeler2").prop('value', "Wachten op tegenstander...");
+    $("#txt_wachten").show();
+    $("#txt_start").hide();
     socket.emit("remove player", { id: localPlayer.id });
     socket.emit("new player", { x: localPlayer.getX() });
 }
 function onRace(data) {
     console.log(data.id + " is ready to race");
-    $("#btnSpeler2").prop('value', "Klaar !!");
-    $("#speler2").attr("src", data.rand+".gif");   
+    $("#txt_start").show();
+    $("#txt_wachten").hide();
+    $("#speler2").attr("src","/images/spel/"+ data.rand+".gif");   
 }
 
 function onSetOpponent(data) {
@@ -126,8 +129,8 @@ function onNewPlayerGlobal(data) {
     if (opponent === undefined || opponent == null) {
         opponent = newPlayer;
         socket.emit("player ready", { id: opponent.id, myId: localPlayer.id });
-        remotePlayers[playerById(opponent.id)].setReady(false);
-        remotePlayers[playerById(localPlayer.id)].setReady(false);
+        //remotePlayers[playerById(opponent.id)].setReady(false);
+        //remotePlayers[playerById(localPlayer.id)].setReady(false);
         $('#play').prop('disabled', false);
     }
         
@@ -138,10 +141,10 @@ function onMovePlayer(data) {
     console.log("New move registered: " + data.x + "door: " + data.id);
     var positie = $("body").scrollTop();
     if (data.id == localPlayer.id) {
-        if (data.x <= 71) {
+        if (data.x <= 78) {
 
 
-            $("html, body").animate({ scrollTop: (positie - (($('body').height() - window.innerHeight) * 0.007)) }, 50);           
+            $("html, body").animate({ scrollTop: (positie - (($('body').height() - window.innerHeight) * 0.006)) }, 50);           
             $('#speler1').animate({ bottom: data.x + "%" }, 50);
         }
         else {
@@ -149,7 +152,7 @@ function onMovePlayer(data) {
         }
     }
     else if (data.id == opponent.id) {
-        if (data.x <= 71) {
+        if (data.x <= 78) {
             $('#speler2').animate({ bottom: data.x + "%" }, 50);
         }
         else {

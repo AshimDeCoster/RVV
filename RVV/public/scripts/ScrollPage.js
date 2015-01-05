@@ -6,7 +6,7 @@ $(document).ready(function () {
     var btnNaarParcours = $('#btnNaarParcours');
     var linkParcours = $('a[href="#Parcours"]');
     var linkRenners = $('a[href="#Renners"]');
-    var hamburgerbutton = $('label[for="nav-trigger"]');
+    var linkSpel = $('a[href="#spel"]');
     
     btnNaarOver.click(function () { 
         ScrollNaarOver();
@@ -25,6 +25,9 @@ $(document).ready(function () {
     });
     linkRenners.click(function () {
         ScrollNaarRenners();
+    });
+    linkSpel.click(function () { 
+        ScrollNaarSpel();
     });
     $(document).on('scroll', function () {
         ControlLocation();
@@ -54,6 +57,9 @@ function ScrollNaarStart() {
 function ScrollNaarRenners() {
     $('#Renners').goTo();
 }
+function ScrollNaarSpel() {
+    $('#spel').goTo();
+}
 
 function ControlLocation() {
     var positie = $("body").scrollTop();
@@ -74,11 +80,15 @@ function ControlLocation() {
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().addClass("active");        
     }
-    else if ((positie+10) >= ($("#Renners").offset().top)) {
+    else if ((positie+10) >= ($("#Renners").offset().top) && positie < $("#spel").offset().top-10) {
         
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().next().addClass("active");
-    }   
+    }else if ((positie + 10) >= ($("#spel").offset().top)) {
+        
+        $("nav ul").children('li').removeClass("active");
+        $("nav ul li:first-of-type").next().next().next().next().addClass("active");
+    }  
 }
 (function ($) {
     $.fn.goTo = function () {

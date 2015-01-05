@@ -4,8 +4,8 @@
 
 
     $('#Renners').live('click', function (e) {
-        console.log(e.target.id);
-        ShowInfo(e.target.id); 
+        var sectionHeight = $('#Renners').height();
+        ShowInfo(e.target.id, sectionHeight); 
     });
 });
 
@@ -55,7 +55,7 @@ function VeranderFoto() {
         i = 1;
     myTimeOut =setTimeout("VeranderFoto()", 5000);
 }
-function ShowInfo(id) {
+function ShowInfo(id, height) {
     var div2 = $($('#Renners').children()[1]);
     var div3 = $($('#Renners').children()[2]);
     var div1 = $($('#Renners').children()[0]);
@@ -72,6 +72,8 @@ function ShowInfo(id) {
             div3.animate({ left: '150%' }, 500);
             div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0}, 500);            
             div2.animate({ left: '100%' }, 500);
+            $('#Renners').height(height);
+
             modus = true;           
         }
         else {
@@ -97,7 +99,8 @@ function ShowInfo(id) {
             div3.animate({ left: '0' }, 500);
             div3.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
             div1.animate({ opacity: 0 }, 500);
-            div2.animate({ opacity: 0 }, 500);
+            div2.animate({ opacity: 0 }, 500);            
+            $('#Renners').height(height);
             modus = true;
         }
         else {
@@ -125,7 +128,8 @@ function ShowInfo(id) {
             div2.animate({ left: '0'}, 500);
             div2.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0, left: '100%' }, 500);
             div1.animate({ opacity: 0 }, 500);
-            div3.animate({ opacity: 0 }, 500);
+            div3.animate({ opacity: 0 }, 500);            
+            $('#Renners').height(height);
             modus = true;
         }
         else {            
