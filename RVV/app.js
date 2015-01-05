@@ -94,6 +94,7 @@ function onNewPlayer(data) {
     console.log("New player created " + players.length);
 };
 function onRace(data) {
+    
     var opp = clients[data.opp];    
     opp.emit("race", { id: data.id });
 }
