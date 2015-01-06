@@ -93,18 +93,25 @@ function onNewPlayer(data) {
     this.broadcast.emit("global player", { id: newPlayer.id, x: newPlayer.getX() });    
     console.log("New player created " + players.length);
 };
-function onRace(data) {
-    
-    console.log("ik voor " + players[playerById(data.id)].getReady());
-    console.log("jij voor " + players[playerById(data.opp)].getReady());
+function onRace(data) {   
     players[playerById(data.id)].setReady(false);
-    console.log("ik na " + players[playerById(data.id)].getReady());
-    console.log("jij na " + players[playerById(data.opp)].getReady());
-
     if (players[playerById(data.opp)].getReady() == false) {
-        var opp = clients[data.opp]; 
-        opp.emit("race", { id: data.id, rand: data.rand });
-        this.emit("race", { id: data.id, rand: data.rand });
+        players[playerById(data.id)].setRandom(data.rand);
+        var opp = clients[data.opp];
+        if (players[playerById(data.opp)].getRandom() == data.rand) {
+            var rand = data.rand++;
+            if (rand == 5)
+                rand = 1;
+            opp.emit("race", { id: data.id, rand: data.rand, isGelijk: false });
+            this.emit("race", { id: data.id, rand: players[playerById(data.opp)].getRandom(), isGelijk: true });
+        }
+        else {
+            opp.emit("race", { id: data.id, rand: data.rand, isGelijk: false });
+            this.emit("race", { id: data.id, rand: players[playerById(data.opp)].getRandom(), isGelijk: false });
+        }
+    }
+    else {
+        players[playerById(data.id)].setRandom(data.rand);
     }
 }
 function onMovePlayer(data) {

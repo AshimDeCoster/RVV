@@ -2,7 +2,7 @@
     remotePlayers,
     socket,
     opponent;
-
+var rand = Math.floor(Math.random() * (5 - 1) + 1);
 $(document).ready(function () {
     init();
     $('#play').prop('disabled', true);
@@ -16,8 +16,7 @@ $('#play').live('click', function (e) {
         alert("please wait");
     }
     else {
-        $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-        var rand = Math.floor(Math.random() * (5 - 1) + 1);
+        $("html, body").animate({ scrollTop: $(document).height() }, 1000);        
         $("#speler1").attr("src", "/images/spel/" + rand + ".gif");   
         socket.emit("race", { id: localPlayer.id, opp: opponent.id, rand: rand });
     }
@@ -45,7 +44,7 @@ function init() {
     localPlayer = new Player(4);
     // Start listening for events   
 
-    socket = io.connect("http://178.116.189.17:1338");
+    socket = io.connect("http://localhost:1338");
 
     //socket = io.connect();  
     setEventHandlers();
@@ -83,11 +82,19 @@ function onEndGame(data) {
     socket.emit("remove player", { id: localPlayer.id });
     socket.emit("new player", { x: localPlayer.getX() });
 }
-function onRace(data) {
+function onRace(data) {    
+    if (data.isGelijk == true) {
+        rand++;
+        if (rand == 5)
+            rand = 1;
+        $("#speler1").attr("src", "/images/spel/" + rand + ".gif");        
+    }
+    $("#speler2").attr("src", "/images/spel/" + data.rand + ".gif");
     console.log(data.id + " is ready to race");
     $("#txt_start").show();
     $("#txt_wachten").hide();
-    $("#speler2").attr("src","/images/spel/"+ data.rand+".gif");   
+   
+    
 }
 
 function onSetOpponent(data) {
