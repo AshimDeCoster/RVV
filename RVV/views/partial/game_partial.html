@@ -1,10 +1,12 @@
 ﻿
+    <h1 id="result">Je bent gewonnen!</h1>
     <input id="play" type="image" src="images/btn_start_spel.png"/>
-    <img id="weg" src="images/spel/weg.png" />
+    <img id="weg" src="images/spel/weg.png" alt="spel_parcour" />
+    <p>Klik zo veel mogelijk op de linkse renner!</p>
     <p id="txt_wachten">Wachten op tegenstander...</p>
     <p id="txt_start">START!</p>
-    <img id="speler1" src="images/spel/1.gif" />
-    <img id="speler2" src="images/spel/2.gif" />
-    <script src="http://localhost:1338/socket.io/socket.io.js"></script>
-    <script src="scripts/Player.js"></script>
-    <script src="scripts/game.js"></script>
+    <img id="speler1" src="images/spel/1.gif" alt="eigen_speler" />
+    <img id="speler2" src="images/spel/2.gif" alt="tegenstander" />
+    <script defer src="http://localhost:1338/socket.io/socket.io.js"></script>
+    <script defer src="scripts/Player.js"></script>
+    <script defer src="scripts/game.js"></script>

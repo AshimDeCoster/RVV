@@ -12,8 +12,9 @@
     </script>
     <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
     <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="stylesheets/normalize.css" rel="stylesheet" type="text/css" />
+    
     <link href="stylesheets/RvV.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
 </head>
 <body>
     <nav>
@@ -39,12 +40,19 @@
             <p>
                 Reeds 95 jaar lang is er slechts 1 dag waar iedere wielerliefhebber echt naar uit kijkt, de dag van de Ronde van Vlaanderen.
                 Ieder jaar hopen duizenden wielerfans een spannende wedstrijd te zien en ieder jaar weer vieren we een gekende held of verwelkomen
-                we een nieuwe. Tientallen renners wisten Vlaanderens Mooiste aan hun palmares toe te voegen. Elk in hun eigen tijdsgeest, elk met
-                verschillend materiaal, maar allemaal met dezelfde overgave. Met een kleine greep uit 95 jaar wielergeschiedenis, geven wij op deze
+                we een nieuwe. 
+            </p><p>
+                Tientallen renners wisten Vlaanderens Mooiste aan hun palmares toe te voegen. 
+                Elk in hun eigen tijdsgeest, elk met verschillend materiaal, maar allemaal met dezelfde overgave. Met een kleine greep uit 95 jaar wielergeschiedenis, geven wij op deze
                 site een overzicht van enkele historische momenten en hun hoofdrolspelers.
             </p>
-            <input type="image" src="images/button_scroll_down_wit.png" alt="submit" id="btnNaarParcours" />
-        </div>
+            <p>
+                Het Centrum van de Ronde van Vlaanderen was onze bron van informatie en inspiratie.
+                Hiernaast ziet u een routebeschrijving naar het centrum in Oudenaarde.
+            </p>
+            <div id="map"></div>
+            </div>
+            <input type="image" src="images/button_scroll_down_wit.png" alt="submit" id="btnNaarParcours" />       
     </section>
 
     <section id="Parcours">
@@ -102,8 +110,10 @@
         <%- include partial/game_partial.html %>
     </section>
 
-    <script src="scripts/ScrollPage.js"></script>
-    <script src="scripts/Parcours.js"></script>
-    <script src="scripts/Flandriens.js"></script>
+    <script defer src="scripts/ScrollPage.js"></script>
+    <script defer src="scripts/Parcours.js"></script>
+    <script defer src="scripts/Flandriens.js"></script>
+    <script src="http://maps.google.se/maps/api/js?sensor=false"></script>
+    <script defer src="scripts/geolocatie.js"></script>
 </body>
 </html>

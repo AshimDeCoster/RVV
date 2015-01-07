@@ -9,22 +9,20 @@ $(document).ready(function () {
    
 });
 
-$('#play').live('click', function (e) {
+$('#play').live('click', function (e) {    
     
-    console.log("test");
     if (opponent === undefined || opponent == null) {
         alert("please wait");
     }
     else {
+        $('#result').hide();
         $("html, body").animate({ scrollTop: $(document).height() }, 1000);        
         $("#speler1").attr("src", "/images/spel/" + rand + ".gif");   
         socket.emit("race", { id: localPlayer.id, opp: opponent.id, rand: rand });
     }
 
 });
-$('#speler1').click(function () {
-    
-
+$('#speler1').click(function (e) {     
     if ($('#txt_start').is(":visible")) {
         console.log(typeof (localPlayer));
         localPlayer.setX((localPlayer.getX() + 1));
@@ -64,14 +62,15 @@ var setEventHandlers = function () {
     
 };
 function onEndGame(data) {
-    if (data.isWon == true) {
-        alert("je bent gewonnen");
+    $('#result').show();
+    if (data.isWon == true) {        
+        $('#result').text("Je bent gewonnen");
         opponent = null;
         $('#speler1').animate({ bottom: '4%' }, 50);
         $('#speler2').animate({ bottom: '4%' }, 50);
     }
     else if (data.isWon == false) {
-        alert("je hebt verloren");
+        $('#result').text("Je bent verloren");
         opponent = null;
         $('#speler1').animate({ bottom: '4%' }, 50);
         $('#speler2').animate({ bottom: '4%' }, 50);
@@ -146,12 +145,14 @@ function onNewPlayerGlobal(data) {
 
 function onMovePlayer(data) {
     console.log("New move registered: " + data.x + "door: " + data.id);
-    var positie = $("body").scrollTop();
+    var top = (document.documentElement && document.documentElement.scrollTop) || 
+              document.body.scrollTop;
+    //var positie = $("body").scrollTop();
     if (data.id == localPlayer.id) {
         if (data.x <= 78) {
 
 
-            $("html, body").animate({ scrollTop: (positie - (($('body').height() - window.innerHeight) * 0.006)) }, 50);           
+            $("html, body").animate({ scrollTop: (top - (($('body').height() - window.innerHeight) * 0.006)) }, 50);           
             $('#speler1').animate({ bottom: data.x + "%" }, 50);
         }
         else {

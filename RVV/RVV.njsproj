@@ -38,6 +38,7 @@
     <Compile Include="public\scripts\Flandriens.js" />
     <Compile Include="public\scripts\Flandriens_Mobiel.js" />
     <Compile Include="public\scripts\game.js" />
+    <Compile Include="public\scripts\geolocatie.js" />
     <Compile Include="public\scripts\Parcours_Mobiel.js" />
     <Compile Include="public\scripts\Player.js" />
     <Compile Include="public\scripts\ScrollPage_Mobiel.js" />

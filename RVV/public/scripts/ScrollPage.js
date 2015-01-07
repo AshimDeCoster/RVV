@@ -7,7 +7,7 @@ $(document).ready(function () {
     var linkParcours = $('a[href="#Parcours"]');
     var linkRenners = $('a[href="#Renners"]');
     var linkSpel = $('a[href="#spel"]');
-    
+    $("nav ul li:first-of-type").addClass("active");
     btnNaarOver.click(function () { 
         ScrollNaarOver();
     });
@@ -62,7 +62,8 @@ function ScrollNaarSpel() {
 }
 
 function ControlLocation() {
-    var positie = $("body").scrollTop();
+    var positie = (document.documentElement && document.documentElement.scrollTop) || 
+              document.body.scrollTop;
     
    if (positie >= 0 && positie < $("#over").offset().top) {
         $("nav ul").children('li').removeClass("active");

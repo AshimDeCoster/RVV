@@ -13,6 +13,7 @@ $(document).ready(function () {
         }
         
     });
+    $('#parcourImg').click(function () { if (clicks == true) { $('#infoOverParcours').fadeOut(); clicks = false; } });
 });
 
 function LoadImages(object) {
