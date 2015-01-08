@@ -10,14 +10,15 @@ var http = require('http');
 var path = require('path');
 var app = express();
 
-var server = http.createServer(app);
+var server = app.listen(80);
 var io = require('socket.io').listen(server);
 var util = require("util"), Player = require("./Helpers/Player").Player;
 var players;
 players = [];
 var clients = {};
-server.listen(1338);
-//var spel = require("./Helpers/Game_server");
+//server.listen(3000);
+
+
 
 // all environments
 

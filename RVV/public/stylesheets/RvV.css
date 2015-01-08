@@ -1,7 +1,14 @@
 ﻿@font-face {
-    font-family: BigJohn;
-    src: url(../fonts/BigJohn.ttf);
-    src: url(../fonts/BigJohn.woff);
+    font-family: 'BigJohn';
+    src: url('../fonts/bigjohn-webfont.eot');
+    src: url('../fonts/bigjohn-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/bigjohn-webfont.woff2') format('woff2'),
+         url('../fonts/bigjohn-webfont.woff') format('woff'),
+         url('../fonts/bigjohn-webfont.ttf') format('truetype'),
+         url('../fonts/bigjohn-webfont.svg#big_johnregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }
 body {
     overflow-x:hidden;
@@ -100,7 +107,7 @@ input[type="image"] {
    
 }
 #over>input{
-    margin:3% auto;
+    margin:2.4% auto;
 }
 #over>div{
     margin:0 auto;
@@ -194,7 +201,7 @@ input[type="image"] {
     }
      #infoOverParcours ul {
         list-style-type:none;
-        padding-left:5%;
+        padding-left:25px;
     }
 
 #Renners{
@@ -253,7 +260,7 @@ input[type="image"] {
    letter-spacing: -1px;  
    background: rgb(0, 0, 0); /* fallback color */
    background: rgba(0, 0, 0, 0.7);
-   padding: 10px; 
+   padding: 15px; 
 }
 #play {
     width:100%;
@@ -278,12 +285,13 @@ input[type="image"] {
         left: 0;       
         font:bold 4em Helvetica, Sans-Serif;
         position: absolute;
-        margin: 23.5% 0 0 38%;
+        margin: 23.5% 0 0 36%;
         display:none;
     }
     #spel p:first-of-type {
-        margin: -40% 0 0 35%;
-        font:bold 2.2em Arial;
+        margin: -40% 0 0 33%;
+        font-family: BigJohn;
+        font-size: 1.5em;
         color:white;
     }
     #txt_start{
@@ -340,7 +348,7 @@ html[xmlns] .clearfix {
        height:100%;
    }
    #spel{
-       display:none;
+       display: none;
    }
     nav ul li {
         float:none;
@@ -397,18 +405,30 @@ html[xmlns] .clearfix {
     }
     #over {
         margin-bottom:25%;
+        min-height: 100%;
+
     }
     #over>div {
         max-width:90%;
+        height: 100%;
     }
     #over>div>h3 {        
         text-align:left;
-        font-size:3em;
+        font-size:2.7em;
         margin-bottom:50px;
         font-family:BigJohn;
     }
     #over>div>p {
-        font-size:0.8em;
+        font-size:2em;
+        float: none;
+        width: 100%;
+        text-align: left;
+        padding: 0 0 43% 0;
+        margin: 0;
+        height: 100%;
+    }
+    #over>div>div{
+        display: none;
     }
     #btnToonInfo{
         width:130px;
@@ -421,7 +441,7 @@ html[xmlns] .clearfix {
         margin:18% 0 0 -425px;
         width:850px;
     }
-    #infoOverParcours p {
+    #infoOverParcours p,#infoOverParcours ul  {
         padding:30px 40px 30px 40px;
     }
     #controls { 

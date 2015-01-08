@@ -37,12 +37,10 @@ window.onbeforeunload = function () {
 
 function init() {
     
-    //canvas = document.getElementById("gameCanvas");
-    //ctx = canvas.getContext("2d");
+    
     localPlayer = new Player(4);
-    // Start listening for events   
-
-    socket = io.connect("http://localhost:1338");
+    // Start listening for events 
+    socket = io.connect("http://localhost:80");
 
     //socket = io.connect();  
     setEventHandlers();
