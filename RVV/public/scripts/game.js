@@ -40,7 +40,7 @@ function init() {
     
     localPlayer = new Player(4);
     // Start listening for events 
-    socket = io.connect("http://localhost:80");
+    socket = io.connect();
 
     //socket = io.connect();  
     setEventHandlers();
