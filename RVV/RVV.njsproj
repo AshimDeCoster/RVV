@@ -33,7 +33,6 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="Helpers\ConnectDb.js" />
-    <Compile Include="Helpers\Game_server.js" />
     <Compile Include="Helpers\Player.js" />
     <Compile Include="public\scripts\Flandriens.js" />
     <Compile Include="public\scripts\Flandriens_Mobiel.js" />
