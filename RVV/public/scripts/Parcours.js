@@ -21,23 +21,21 @@ function LoadImages(object) {
     var dir = "/images/Parcours/";
     var firstImg = $('#parcourImg');
     var btnToonInfo = $("#btnToonInfo");
-    btnToonInfo.fadeOut();
-    $('#infoOverParcours').fadeOut(800);
-    clicks = false;
-    
+    btnToonInfo.fadeOut(1000);
+    var stringSrc = dir + fileNames[$(object).index()] + ".jpg";
+    clicks = false;    
     $("#controls span").removeClass("selected");
-    $(object).addClass("selected");
-    
-    firstImg.fadeOut(800, function () {
-        firstImg.attr("src", dir + fileNames[$(object).index()] + ".jpg");
-        firstImg.fadeIn(800);
-        btnToonInfo.fadeIn(800);
+    $(object).addClass("selected");    
+    firstImg.fadeOut(1000, function () {        
+        firstImg.attr("src", stringSrc );
+        firstImg.fadeIn(1000);       
+    });
+    $('#infoOverParcours').fadeOut(1000, function () {       
+        btnToonInfo.fadeIn(1000);
     });
 }
 function GetParcourInfo() {
-    var info = $.parseJSON($('#info').text());
-    
-    
+    var info = $.parseJSON($('#info').text());   
     for (var i = 0; i < info.length; i++) {
         if (info[i].jaar == $(".selected").text()) {
             $('#infoOverParcours>p:first-of-type').html(info[i].info);

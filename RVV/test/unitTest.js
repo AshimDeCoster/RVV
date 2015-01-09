@@ -7,10 +7,8 @@ describe('mongoDb', function () {
             done();
         else
             throw "don't pass";
-    });
-    
+    });    
 });
-
 describe('/', function () {
     it('should return 200', function (done) {
         http.get('http://localhost:1337', function (res) {

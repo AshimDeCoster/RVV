@@ -1,8 +1,5 @@
-﻿$(document).ready(function () {
-    
-    VeranderFoto();
-    
-    
+﻿$(document).ready(function () {    
+    VeranderFoto();   
     $('#Renners').live('click', function (e) {
         ShowInfo(e.target.id);
     });
@@ -16,9 +13,6 @@
         HideInfo();
     });
 });
-
-
-
 var i = 1;
 var myTimeOut;
 var modus = false;
@@ -27,26 +21,18 @@ function VeranderFoto() {
     var imgArrow = $('img[alt="arrow_openinfo_indication"]');
     var span = $("#span1");
     var div = $("#div1");
-    var dir = "/images/Flandriens/";
-    
-    
-    
+    var dir = "/images/Flandriens/";    
     var flandrien = $.parseJSON($('#flandriens').val());
     var random = Math.floor(Math.random() * (13 - 0) + 0);
     var src1 = $("#foto1").attr('src');
     while (src1 == dir + flandrien[random].img) {
         random = Math.floor(Math.random() * (13 - 0) + 0);
-    }
-    
+    }    
     div.children('h2').text(flandrien[random].naam);
     div.children('p').text(flandrien[random].beschrijving);
-    div.children('span').text("Carrière: " + flandrien[random].carriere);
-    
-    
-    img.fadeOut(800, function () {
-        
-        img.attr("src", dir + flandrien[random].img);
-        
+    div.children('span').text("Carrière: " + flandrien[random].carriere);    
+    img.fadeOut(800, function () {        
+        img.attr("src", dir + flandrien[random].img);        
         img.fadeIn(800);
     });
     span.fadeOut(800, function () {
@@ -55,8 +41,7 @@ function VeranderFoto() {
     });
     imgArrow.fadeOut(800, function () {
         imgArrow.fadeIn(800);
-    });
-    
+    });    
     if (i < 4)
         i++;
     else
@@ -65,11 +50,9 @@ function VeranderFoto() {
 }
 function ShowInfo(id) {
     var div1 = $('#div1');
-    var positiondiv1 = div1.position();
-    //var positiondiv3 = div3.position();
+    var positiondiv1 = div1.position();    
     if (id == "foto1") {
-        if (modus == false) {
-            
+        if (modus == false) {            
             $('img[alt="arrow_openinfo_indication"]').fadeOut(200);
             clearTimeout(myTimeOut);
             $('#div1').css({ visibility: "visible" }).animate({ "left": "0" }, 500);
@@ -83,7 +66,3 @@ function HideInfo() {
     myTimeOut = setTimeout("VeranderFoto()", 5000);
     $('img[alt="arrow_openinfo_indication"]').fadeIn(800);
 }
-
-
-
-

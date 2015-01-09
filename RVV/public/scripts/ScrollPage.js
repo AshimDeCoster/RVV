@@ -1,5 +1,4 @@
-$(document).ready(function () {
-    
+$(document).ready(function () {    
     var linkHome = $('a[href="#Startpagina"]');
     var btnNaarOver = $('#btnNaarOver');
     var linkOver = $('a[href="#over"]');
@@ -33,7 +32,6 @@ $(document).ready(function () {
         ControlLocation();
     });
 });
-
 window.onscroll = function (event) {
     var scroll = parseInt($(window).scrollTop());
         
@@ -42,9 +40,6 @@ window.onscroll = function (event) {
     else
         $('nav').removeClass("f-nav");    
 }
-
-
-
 function ScrollNaarOver() {
     $('#over').goTo();
 }
@@ -60,33 +55,25 @@ function ScrollNaarRenners() {
 function ScrollNaarSpel() {
     $('#spel').goTo();
 }
-
 function ControlLocation() {
     var positie = (document.documentElement && document.documentElement.scrollTop) || 
-              document.body.scrollTop;
-    
+              document.body.scrollTop;    
    if (positie >= 0 && positie < $("#over").offset().top) {
         $("nav ul").children('li').removeClass("active");
-        $("nav ul li:first-of-type").addClass("active");
-       
+        $("nav ul li:first-of-type").addClass("active");       
     }
     else if (positie >= $("#over").offset().top && positie < ($("#Parcours").offset().top-1) ) {
         $("nav ul").children('li').removeClass("active");
-        $("nav ul li:first-of-type").next().addClass("active");
-        
-    }
-    
-    else if ((positie+1) >= ($("#Parcours").offset().top) && positie < $("#Renners").offset().top-10) {
-        
+        $("nav ul li:first-of-type").next().addClass("active");        
+    }    
+    else if ((positie+1) >= ($("#Parcours").offset().top) && positie < $("#Renners").offset().top-10) {        
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().addClass("active");        
     }
-    else if ((positie+10) >= ($("#Renners").offset().top) && positie < $("#spel").offset().top-10) {
-        
+    else if ((positie+10) >= ($("#Renners").offset().top) && positie < $("#spel").offset().top-10) {        
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().next().addClass("active");
-    }else if ((positie + 10) >= ($("#spel").offset().top)) {
-        
+    }else if ((positie + 10) >= ($("#spel").offset().top)) {        
         $("nav ul").children('li').removeClass("active");
         $("nav ul li:first-of-type").next().next().next().next().addClass("active");
     }  

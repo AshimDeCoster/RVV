@@ -1,29 +1,18 @@
-﻿$(document).ready(function () {
-    
+﻿$(document).ready(function () {  
     VeranderFoto();
-
-
     $('#Renners').live('click', function (e) {
         var sectionHeight = $('#Renners').height();
         ShowInfo(e.target.id, sectionHeight); 
     });
 });
-
-
-
 var i = 1;
 var myTimeOut;
 var modus = false;
-function VeranderFoto() {
-   
-    //var randomImg = Math.floor(Math.random() * (4 - 1) + 1);
+function VeranderFoto() {     
     var img = $("#foto" + i);
     var span = $("#span" + i);
     var div = $("#div" + i);
-    var dir = "/images/Flandriens/";
-    
-    
-    
+    var dir = "/images/Flandriens/";    
     var flandrien = $.parseJSON($('#flandriens').val());
     var random = Math.floor(Math.random() * (13 - 0) + 0);
     var src1 = $("#foto1").attr('src');
@@ -31,24 +20,18 @@ function VeranderFoto() {
     var src3 = $("#foto3").attr('src');
     while(src1 == dir + flandrien[random].img || src2 == dir + flandrien[random].img || src3 == dir + flandrien[random].img) {
         random = Math.floor(Math.random() * (13 - 0) + 0);
-    }
-    
+    }    
     div.children('h2').text(flandrien[random].naam);   
     div.children('p').text(flandrien[random].beschrijving);
     div.children('span').text("Carrière: "+ flandrien[random].carriere);
-    
-
-    img.fadeOut(800, function () {
-           
-            img.attr("src", dir + flandrien[random].img);
-           
+    img.fadeOut(800, function () {           
+            img.attr("src", dir + flandrien[random].img);           
             img.fadeIn(800);
         });
     span.fadeOut(800, function () {
         span.text(flandrien[random].naam);
         span.fadeIn(800);
-    });
-    
+    });    
     if (i < 4)
         i++;
     else
@@ -73,7 +56,6 @@ function ShowInfo(id, height) {
             div1.children('div').css({ opacity: 0.0, visibility: "visible" }).animate({ opacity: 1.0}, 500);            
             div2.animate({ left: '100%' }, 500);
             $('#Renners').height(height);
-
             modus = true;           
         }
         else {
@@ -86,8 +68,7 @@ function ShowInfo(id, height) {
             }, 500);            
             div1.children('div').css({ opacity: 1.0, visibility: "visible" }).animate({ opacity: 0, visibility: "hidden" }, 500);        
             modus = false;
-            myTimeOut = setTimeout("VeranderFoto()", 5000);
-           
+            myTimeOut = setTimeout("VeranderFoto()", 5000);           
         }
     }
     else if (id == "foto3") {
@@ -116,10 +97,8 @@ function ShowInfo(id, height) {
             modus = false;
             myTimeOut = setTimeout("VeranderFoto()", 5000);
         }
-
     }
-    else if (id == "foto2") {
-        
+    else if (id == "foto2") {        
         if (modus == false) {
             clearTimeout(myTimeOut);           
             div1.css({ position: "absolute", left: positiondiv1.left, top: positiondiv1.top });
@@ -145,12 +124,5 @@ function ShowInfo(id, height) {
             modus = false;
             myTimeOut = setTimeout("VeranderFoto()", 5000);
         }
-
-    }
-   
-       
+    }       
 }
-
-
-
-

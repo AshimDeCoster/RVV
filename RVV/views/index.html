@@ -3,11 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>RVV - vroeger en nu</title>    
-   
+    <title>RVV - vroeger en nu</title> 
     <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" />    
     <link href="stylesheets/RvV.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset/cssreset-min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -16,7 +14,6 @@
             $(location).attr('href', '/mobiel');
         }
     </script>
-
 </head>
 <body>
     <nav>
@@ -73,11 +70,10 @@
         <div id="infoOverParcours">
             <p></p>
             <ul></ul>
-            <p>Klik terug op info om dit venster te sluiten.</p>
+            <p>Klik terug op de info knop of klik buiten dit venster om deze info te sluiten.</p>
         </div>
     </section>
     <section id="Renners" class="clearfix">
-
         <div class="clearfix">
             <img id="foto1" src="images/Flandriens/<%= flandriens[0].img %>" alt="<%= flandriens[0].naam %>" class="afbeelding_renners" />
             <h1><span id="span1"><%= flandriens[0].naam %></span></h1>
@@ -111,7 +107,6 @@
     <section id="spel">
         <%- include partial/game_partial.html %>
     </section>
-
     <script defer src="scripts/ScrollPage.js"></script>
     <script defer src="scripts/Parcours.js"></script>
     <script defer src="scripts/Flandriens.js"></script>

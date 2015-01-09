@@ -1,6 +1,5 @@
 ﻿var clicks = 0;
-$(document).ready(function () {
-    
+$(document).ready(function () {    
     var linkHome = $('a[href="#Startpagina"]');
     var btnNaarOver = $('#btnNaarOver');
     var linkOver = $('a[href="#over"]');
@@ -8,8 +7,7 @@ $(document).ready(function () {
     var linkParcours = $('a[href="#Parcours"]');
     var linkRenners = $('a[href="#Renners"]');
     var hamburgerbutton = $('label[for="nav-trigger"]');
-    var menuListItem = $('nav ul li');
-    
+    var menuListItem = $('nav ul li');    
     btnNaarOver.click(function () {
         ScrollNaarOver();
     });
@@ -36,12 +34,6 @@ $(document).ready(function () {
         showHideMobileMenu();
     });
 });
-
-window.onscroll = function (event) {
-}
-
-
-
 function ScrollNaarOver() {
     $('#over').goTo();
 }
@@ -62,7 +54,6 @@ function ScrollNaarRenners() {
         return this;
     }
 })(jQuery);
-
 function showHideMobileMenu() {
     if (clicks == 0) {
         $("nav").animate({ "left": "0px" });

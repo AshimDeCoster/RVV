@@ -25,8 +25,7 @@ function GetGeo() {
                 origin: coords,
                 destination: 'Markt 43, 9700 Oudenaarde',
                 travelMode: google.maps.DirectionsTravelMode.DRIVING
-            };
-            
+            };            
             directionsService.route(request, function (response, status) {
                 if (status == google.maps.DirectionsStatus.OK) {
                     directionsDisplay.setDirections(response);

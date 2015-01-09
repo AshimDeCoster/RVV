@@ -5,12 +5,9 @@
 var rand = Math.floor(Math.random() * (5 - 1) + 1);
 $(document).ready(function () {
     init();
-    $('#play').prop('disabled', true);
-   
+    $('#play').prop('disabled', true);   
 });
-
-$('#play').live('click', function (e) {    
-    
+$('#play').live('click', function (e) {        
     if (opponent === undefined || opponent == null) {
         alert("please wait");
     }
@@ -20,33 +17,23 @@ $('#play').live('click', function (e) {
         $("#speler1").attr("src", "/images/spel/" + rand + ".gif");   
         socket.emit("race", { id: localPlayer.id, opp: opponent.id, rand: rand });
     }
-
 });
 $('#speler1').click(function (e) {     
-    if ($('#txt_start').is(":visible")) {
-        console.log(typeof (localPlayer));
+    if ($('#txt_start').is(":visible")) {        
         localPlayer.setX((localPlayer.getX() + 1));
         socket.emit("move player", { x: localPlayer.getX(), id: localPlayer.id, opp: opponent.id });
     }
 });
-
-window.onbeforeunload = function () {
-    console.log(localPlayer.getID());
+window.onbeforeunload = function () {    
     socket.emit("remove player", { id: localPlayer.id });
 };
-
-function init() {
-    
-    
+function init() {   
     localPlayer = new Player(4);
     // Start listening for events 
-    socket = io.connect();
-
-    //socket = io.connect();  
+    socket = io.connect();   
     setEventHandlers();
     remotePlayers = [];
 };
-
 var setEventHandlers = function () {
     socket.on("connect", onSocketConnected);
     socket.on("disconnect", onSocketDisconnect);
@@ -56,8 +43,7 @@ var setEventHandlers = function () {
     socket.on("global player", onNewPlayerGlobal);
     socket.on("set opponent", onSetOpponent);
     socket.on("race", onRace);
-    socket.on("end game", onEndGame);
-    
+    socket.on("end game", onEndGame);    
 };
 function onEndGame(data) {
     $('#result').show();
@@ -89,67 +75,47 @@ function onRace(data) {
     $("#speler2").attr("src", "/images/spel/" + data.rand + ".gif");
     console.log(data.id + " is ready to race");
     $("#txt_start").show();
-    $("#txt_wachten").hide();
-   
-    
+    $("#txt_wachten").hide();    
 }
-
 function onSetOpponent(data) {
     var play = new Player(4);
     play.id = data.id;
     opponent = play;
     $('#play').prop('disabled', false);
 }
-
 function onSocketConnected() {
-    console.log("Connected to socket server");
-    
+    console.log("Connected to socket server");    
     socket.emit("new player", { x: localPlayer.getX() });
 };
-
 function onSocketDisconnect() {
     console.log("Disconnected from socket server");
     socket.emit("remove player", { id: localPlayer.getID() });
 };
-
-function onNewPlayer(data) {
-    
+function onNewPlayer(data) {    
     var newPlayer = new Player(data.x);
-    newPlayer.id = data.id;
-    
+    newPlayer.id = data.id;    
     console.log("New player connected: " + data.id + "   " + localPlayer.id);
     localPlayer = newPlayer;
     remotePlayers.push(newPlayer);
-    console.log(localPlayer.id);
-       
-   
+    console.log(localPlayer.id);  
 };
-function onNewPlayerGlobal(data) {
-    
+function onNewPlayerGlobal(data) {    
     var newPlayer = new Player(data.x);
     newPlayer.id = data.id;
     remotePlayers.push(newPlayer);
     console.log("New Global player connected: " + data.id);
     if (opponent === undefined || opponent == null) {
         opponent = newPlayer;
-        socket.emit("player ready", { id: opponent.id, myId: localPlayer.id });
-        //remotePlayers[playerById(opponent.id)].setReady(false);
-        //remotePlayers[playerById(localPlayer.id)].setReady(false);
+        socket.emit("player ready", { id: opponent.id, myId: localPlayer.id });  
         $('#play').prop('disabled', false);
-    }
-        
-   
+    }   
 };
-
 function onMovePlayer(data) {
     console.log("New move registered: " + data.x + "door: " + data.id);
     var top = (document.documentElement && document.documentElement.scrollTop) || 
-              document.body.scrollTop;
-    //var positie = $("body").scrollTop();
+              document.body.scrollTop;   
     if (data.id == localPlayer.id) {
         if (data.x <= 78) {
-
-
             $("html, body").animate({ scrollTop: (top - (($('body').height() - window.innerHeight) * 0.006)) }, 50);           
             $('#speler1').animate({ bottom: data.x + "%" }, 50);
         }
@@ -166,10 +132,8 @@ function onMovePlayer(data) {
         }
     } else { }
 };
-
 function onRemovePlayer(data) {
-    var removePlayer = remotePlayers[playerById(data.id)];
-    
+    var removePlayer = remotePlayers[playerById(data.id)];    
     if (!removePlayer) {
         console.log("Player not found: " + data.id);
         if (typeof (opponent) != undefined && opponent != null) {
@@ -189,7 +153,6 @@ function onRemovePlayer(data) {
     remotePlayers.splice(remotePlayers.indexOf(removePlayer), 1);
     console.log("removed " + remotePlayers.length);
 };
-
 function playerById(id) {
     var i;
     for (i = 0; i < remotePlayers.length; i++) {

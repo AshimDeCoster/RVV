@@ -1,28 +1,21 @@
-﻿
-/**
+﻿/**
  * Module dependencies.
  */
-
 var express = require('express');
 var routes = require('./routes');
 var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var app = express();
-//var server = require('http').Server(app);
 var server = http.Server(app);
 var io = require('socket.io')(server);
-
 var util = require("util"), Player = require("./Helpers/Player").Player;
+//socket.io vars
 var players;
 players = [];
 var clients = {};
-//server.listen(3000);
-
-
 
 // all environments
-
 app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -36,28 +29,15 @@ app.use(app.router);
 app.use(require('stylus').middleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
-
 // development only
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());   
 }
-
 app.get('/', routes.index);
 app.get('/mobiel', routes.mobiel);
-app.get('/helloworld', function (req, res) {    
- 
-    
-});
 app.get('/users', user.list);
 
-/*io.configure(function () {
-    io.set('transports', ['websocket']);
-    io.set('match origin protocol', true);
-});*/
 io.sockets.on('connection',onSocketConnection);  
-
 function onSocketConnection(client) {
     clients[client.id] = client;   
     util.log("New player has connected: " + client.id);
@@ -68,23 +48,14 @@ function onSocketConnection(client) {
     client.on("player ready", onPlayerReady);
     client.on("player notready", onPlayerNotReady);
     client.on("race", onRace);
-    client.on("end game", onEndGame);
-    
+    client.on("end game", onEndGame);    
 };
 function onClientDisconnect() {
     util.log("Player has disconnected: " + this.id);
 };
-
-function onNewPlayer(data) {
-    
+function onNewPlayer(data) {    
     var newPlayer = new Player(data.x);
-    newPlayer.id = this.id;
-    //
-    //var i, existingPlayer;    
-    /*for (i = 0; i < players.length; i++) {       
-        existingPlayer = players[i];
-        this.emit("new player", { id: newPlayer.id, x: newPlayer.getX(), pos: players.length });
-    };*/ 
+    newPlayer.id = this.id;    
     players.push(newPlayer);
     this.emit("new player", { id: newPlayer.id, x: newPlayer.getX() });
     this.broadcast.emit("global player", { id: newPlayer.id, x: newPlayer.getX() });    
@@ -125,9 +96,7 @@ function onMovePlayer(data) {
     this.emit("move player", { x:data.x, id: data.id});
 };
 function onPlayerReady(data) {
-    if (typeof(players[playerById(data.id)]) != "undefined" && typeof (players[playerById(data.myId)]) != "undefined") {
-        //players[playerById(data.id)].setReady(false);
-        //players[playerById(data.myId)].setReady(false);        
+    if (typeof(players[playerById(data.id)]) != "undefined" && typeof (players[playerById(data.myId)]) != "undefined") {            
         var opp = clients[data.id];
         opp.emit("set opponent", { id: data.myId });
     }
@@ -137,17 +106,14 @@ function onPlayerNotReady(data) {
     console.log("Player " + data.id + players[playerById(data.id)].getReady());
 }
 function onReMovePlayer(data) {
-    var removePlayer = players[playerById(this.id)];
-    
+    var removePlayer = players[playerById(this.id)];    
     if (!removePlayer) {
         util.log("Player not found: " + this.id);
         return;
-    }    ;
-    
+    }     
     players.splice(players.indexOf(removePlayer), 1);
     console.log("player removed " + removePlayer.id);
     this.broadcast.emit("remove player", { id: this.id });
-
 }
 function onEndGame(data) {
     var win = clients[data.win];
@@ -160,11 +126,9 @@ function playerById(id) {
     for (i = 0; i < players.length; i++) {
         if (players[i].id == id)
             return i;
-    }    ;
-    
+    }    
     return false;
 };
-
 // run server
 server.listen(app.get('port'), function () {
     console.log(("Express server listening on port " + app.get('port')))
