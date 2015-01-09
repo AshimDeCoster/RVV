@@ -9,11 +9,10 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var app = express();
-var server = require('http').Server(app);
-server.listen(80);
+//var server = require('http').Server(app);
+var server = http.Server(app);
 var io = require('socket.io')(server);
 
-console.log(server);
 var util = require("util"), Player = require("./Helpers/Player").Player;
 var players;
 players = [];
@@ -24,7 +23,7 @@ var clients = {};
 
 // all environments
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 1337);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
@@ -52,11 +51,6 @@ app.get('/helloworld', function (req, res) {
     
 });
 app.get('/users', user.list);
-
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-});
-
 
 /*io.configure(function () {
     io.set('transports', ['websocket']);
@@ -170,3 +164,8 @@ function playerById(id) {
     
     return false;
 };
+
+// run server
+server.listen(app.get('port'), function () {
+    console.log(("Express server listening on port " + app.get('port')))
+});

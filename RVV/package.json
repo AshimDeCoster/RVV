@@ -13,5 +13,8 @@
     "mongoose": "^3.9.7",
     "socket.io": "^1.2.1",
     "stylus": "*"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0"
   }
 }

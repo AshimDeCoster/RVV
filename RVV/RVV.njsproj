@@ -43,6 +43,7 @@
     <Compile Include="public\scripts\ScrollPage_Mobiel.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\user.js" />
+    <Compile Include="test\unitTest.js" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\RvV.css" />
     <Content Include="README.md" />
@@ -58,6 +59,7 @@
     <Folder Include="Data\models\" />
     <Folder Include="Data\schemas\" />
     <Folder Include="Helpers\" />
+    <Folder Include="test\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="public\scripts\" />
