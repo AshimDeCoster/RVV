@@ -45,6 +45,7 @@
     <Compile Include="routes\user.js" />
     <Compile Include="test\unitTest.js" />
     <Content Include="package.json" />
+    <Content Include="public\stylesheets\reset.css" />
     <Content Include="public\stylesheets\RvV.css" />
     <Content Include="README.md" />
     <Content Include="Web.config" />
